@@ -1,10 +1,15 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+1. nvm install 14.
+
+2. npm install.
+
+3. npm start
+
+Home: http://localhost:3000/
+Login: http://localhost:3000/login
+Page1: http://localhost:3000/page1 
 
 ### `npm start`
 
