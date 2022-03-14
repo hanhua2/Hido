@@ -4,8 +4,10 @@ import { Routes, Route, Link } from "react-router-dom";
 import {
   Home,
   LogIn,
-  Page1,
-  Navigation
+  Navigation,
+  Detail,
+  Day,
+  Month
 } from "./component";
 
 
