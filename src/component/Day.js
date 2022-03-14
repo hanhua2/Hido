@@ -1,16 +1,16 @@
 import React from "react";
-import '../Day.css';
+import '../Month.css';
 
 function Day() {
     return (
-        <div className={"Day"}>
-        <section
-            className="u-clearfix u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-section-1"
-            id="sec-c929">
-            <div className="u-expanded-height u-grey-5 u-shape u-shape-rectangle u-shape-1"/>
-            <span className="u-icon u-icon-rectangle u-text-grey-40 u-icon-1">
-                className="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-77c2"
-                style={{enableBackground:"new 0 0 55 55"}}><path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+                <div className={"Day"}>
+            <section
+                className="u-clearfix u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-section-1"
+                id="sec-e66e">
+                <div className="u-expanded-height u-grey-5 u-shape u-shape-rectangle u-shape-1"/>
+                <span className="u-icon u-icon-rectangle u-text-grey-40 u-icon-1"><svg
+                    className="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-77c2"
+                    style={{enableBackground: "new 0 0 55 55"}}><path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
 	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
 	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
 	c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
@@ -25,127 +25,73 @@ function Day() {
 	c0-0.867-0.318-1.708-0.887-2.369v-4.667c0.052-0.52,0.236-3.448-1.883-5.864C34.524,9.065,31.541,8,27.5,8
 	s-7.024,1.065-8.867,3.168c-2.119,2.416-1.935,5.346-1.883,5.864v4.667c-0.568,0.661-0.887,1.502-0.887,2.369v3.545
 	c0,1.101,0.494,2.128,1.34,2.821c0.81,3.173,2.477,5.575,3.093,6.389v2.894c0,0.816-0.445,1.566-1.162,1.958l-7.907,4.313
-	c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z"/></span>
-            <h5 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-1">User Account</h5>
-            <a href="https://nicepage.com/c/testimonials-html-templates"
-               className="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-none u-radius-18 u-text-black u-text-hover-white u-btn-1">Settings&nbsp;</a>
-            <span className="u-file-icon u-icon u-icon-rectangle u-text-grey-40 u-icon-2"><img src="images/2099058.png"
-                                                                                               alt=""/>
-            </span>
-            <h3 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-2">2022.2.24</h3><span
-            className="u-file-icon u-icon u-icon-rectangle u-text-grey-40 u-icon-3"><img src="images/54481.png" alt="" /></span>
-            <a href="https://nicepage.com/c/testimonials-html-templates"
-               className="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-none u-radius-18 u-text-black u-text-hover-white u-btn-2">Search</a>
-            <p className="u-text u-text-3">Users could add their own description here.</p>
-            <span
-            className="u-file-icon u-icon u-icon-rectangle u-text-grey-40 u-icon-4"><img src="images/651717.png"
-                                                                                         alt=""/></span>
-            <a href="https://nicepage.com/c/testimonials-html-templates"
-               className="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-none u-radius-18 u-text-black u-text-hover-white u-btn-3">MUSIC</a>
-            <p className="u-custom-font u-font-ubuntu u-text u-text-default u-text-4">My Templates</p>
-            <a href="https://nicepage.com/k/interactive-website-templates"
-               className="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-4">Export</a>
-            <a href="https://nicepage.com/k/interactive-website-templates"
-               className="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-5">Sort
-                By</a>
-            <div className="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-1"/>
-            <div className="u-list u-list-1">
-                <div className="u-repeater u-repeater-1">
-                    <div className="u-container-style u-list-item u-repeater-item">
-                        <div className="u-container-layout u-similar-container u-container-layout-1">
-                            <div
-                                className="u-container-style u-custom-item u-group u-palette-3-light-2 u-radius-10 u-shape-round u-group-1">
-                                <div className="u-container-layout u-valign-middle u-container-layout-2">
-                                    <p className="u-custom-item u-text u-text-5">To Do</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="u-container-style u-list-item u-repeater-item">
-                        <div className="u-container-layout u-similar-container u-container-layout-3">
-                            <div
-                                className="u-container-style u-custom-item u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-2">
-                                <div className="u-container-layout u-valign-middle u-container-layout-4">
-                                    <p className="u-custom-item u-text u-text-6">Done</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="u-container-style u-list-item u-repeater-item">
-                        <div className="u-container-layout u-similar-container u-container-layout-5">
-                            <div
-                                className="u-container-style u-custom-color-2 u-custom-item u-group u-radius-10 u-shape-round u-group-3">
-                                <div className="u-container-layout u-valign-middle u-container-layout-6">
-                                    <p className="u-custom-item u-text u-text-7">Doing</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+	c-0.252,0.137-0.502,0.297-0.752,0.476C5.276,41.792,2,35.022,2,27.5z" /></svg></span>
+                <h5 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-1">User Account</h5><span
+                className="u-file-icon u-icon u-icon-rectangle u-text-grey-40 u-icon-2"><img src="images/2099058.png"
+                                                                                             alt=""/></span>
+                <a href="https://nicepage.com/c/testimonials-html-templates"
+                   className="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-none u-radius-18 u-text-black u-text-hover-white u-btn-1">Settings&nbsp;</a>
+                <h3 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-2">2022.2.24</h3><span
+                className="u-file-icon u-icon u-icon-rectangle u-text-grey-40 u-icon-3"><img src="images/54481.png"
+                                                                                             alt=""/></span>
+                <a href="https://nicepage.com/c/testimonials-html-templates"
+                   className="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-none u-radius-18 u-text-black u-text-hover-white u-btn-2">Search</a>
+                <p className="u-text u-text-3">Users could add their own description here.</p><span
+                className="u-file-icon u-icon u-icon-rectangle u-text-grey-40 u-icon-4"><img src="images/651717.png"
+                                                                                             alt=""/></span>
+                <a href="https://nicepage.com/c/testimonials-html-templates"
+                   className="u-border-2 u-border-black u-btn u-btn-round u-button-style u-hover-black u-none u-radius-18 u-text-black u-text-hover-white u-btn-3">MUSIC</a>
+                <a href="https://nicepage.com/k/interactive-website-templates"
+                   className="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-4">Sort</a>
+                <a href="https://nicepage.com/k/interactive-website-templates"
+                   className="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-5">Export</a>
+                <div className="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-1"/>
+                <p className="u-custom-font u-font-ubuntu u-text u-text-default u-text-4">My Templates</p>
+                <img className="u-image u-image-default u-image-1" src="images/bd0c919f-0992-d658-6e0d-584048fd91e6.PNG"
+                     alt="" data-image-width="1918" data-image-height="1293"/>
+                <a href="https://nicepage.com/k/youtube-website-templates"
+                   className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-6">DAY&nbsp;
+                    <span className="u-icon u-text-palette-1-dark-2 u-icon-5"><svg className="u-svg-content"
+                                                                                   viewBox="0 0 490.677 490.677" x="0px"
+                                                                                   y="0px"
+                                                                                   style={{
+                                                                                       width: "1em",
+                                                                                       height: "1em"
+                                                                                   }}><path
+                        d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z" /></svg></span>
+                </a>
+                <ul className="u-custom-font u-font-ubuntu u-text u-text-default u-text-5">
+                    <li>2022.2.24</li>
+                </ul>
+                <a href="https://nicepage.com/k/youtube-website-templates"
+                   className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-7">WEEK&nbsp;
+                    <span className="u-icon u-text-palette-1-dark-2 u-icon-6"><svg className="u-svg-content"
+                                                                                   viewBox="0 0 490.677 490.677" x="0px"
+                                                                                   y="0px"
+                                                                                   style={{
+                                                                                       width: "1em",
+                                                                                       height: "1em"
+                                                                                   }}><path
+                        d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z" /></svg></span>
+                </a>
+                <a href="https://nicepage.com/k/youtube-website-templates"
+                   className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-8">MONTH&nbsp;
+                    <span className="u-icon u-text-palette-1-dark-2 u-icon-7"><svg className="u-svg-content"
+                                                                                   viewBox="0 0 490.677 490.677" x="0px"
+                                                                                   y="0px"
+                                                                                   style={{
+                                                                                       width: "1em",
+                                                                                       height: "1em"
+                                                                                   }}><path
+                        d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z" /></svg></span>
+                </a>
+            </section>
+
+            <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">
+                <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                    <p className="u-small-text u-text u-text-variant u-text-1">@2022 Hido Copyright.</p>
                 </div>
-            </div>
-            <a href="https://nicepage.com/k/youtube-website-templates"
-               className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-6">DAY&nbsp;
-                <span className="u-icon u-text-palette-1-dark-2 u-icon-5"><svg className="u-svg-content"
-                                                                               viewBox="0 0 490.677 490.677" x="0px"
-                                                                               y="0px" style={{width: "1em", height: "1em"}}><path
-                    d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"/></svg></span>
-            </a>
-            <ul className="u-custom-font u-font-ubuntu u-text u-text-default u-text-8">
-                <li>2022.2.23</li>
-                <li>2022.2.24</li>
-            </ul>
-            <div className="u-list u-list-2">
-                <div className="u-repeater u-repeater-2">
-                    <div className="u-container-style u-list-item u-repeater-item">
-                        <div className="u-container-layout u-similar-container u-container-layout-7">
-                            <a href="https://nicepage.best"
-                               className="u-border-1 u-border-grey-30 u-btn u-btn-round u-button-style u-custom-item u-hover-black u-none u-radius-6 u-text-grey-30 u-text-hover-white u-btn-7">Review
-                                IT5007</a>
-                            <a href="https://nicepage.com/c/about-us-html-templates"
-                               className="u-border-none u-btn u-button-style u-none u-btn-8">...</a>
-                            <h4 className="u-custom-font u-custom-item u-font-ubuntu u-text u-text-default u-text-grey-40 u-text-9">+
-                                New</h4>
-                        </div>
-                    </div>
-                    <div className="u-container-style u-list-item u-repeater-item">
-                        <div className="u-container-layout u-similar-container u-container-layout-8">
-                            <a href="https://nicepage.best"
-                               className="u-border-1 u-border-grey-30 u-btn u-btn-round u-button-style u-custom-item u-hover-black u-none u-radius-6 u-text-grey-30 u-text-hover-white u-btn-9">Watch
-                                Movie</a>
-                            <a href="https://nicepage.com/c/about-us-html-templates"
-                               className="u-border-none u-btn u-button-style u-none u-btn-10">...</a>
-                            <h4 className="u-custom-font u-custom-item u-font-ubuntu u-text u-text-default u-text-grey-40 u-text-10">+
-                                New</h4>
-                        </div>
-                    </div>
-                    <div className="u-container-style u-list-item u-repeater-item">
-                        <div className="u-container-layout u-similar-container u-container-layout-9">
-                            <a href="https://nicepage.best"
-                               className="u-border-1 u-border-grey-30 u-btn u-btn-round u-button-style u-custom-item u-hover-black u-none u-radius-6 u-text-grey-30 u-text-hover-white u-btn-11">EAT
-                                PIZZAHOT</a>
-                            <a href="https://nicepage.com/c/about-us-html-templates"
-                               className="u-border-none u-btn u-button-style u-none u-btn-12">...</a>
-                            <h4 className="u-custom-font u-custom-item u-font-ubuntu u-text u-text-default u-text-grey-40 u-text-11">+
-                                New</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="https://nicepage.com/k/youtube-website-templates"
-               className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-13">WEEK&nbsp;
-                <span className="u-icon u-text-palette-1-dark-2 u-icon-6"><svg className="u-svg-content"
-                                                                               viewBox="0 0 490.677 490.677" x="0px"
-                                                                               y="0px" style={{width: "1em", height: "1em"}}><pat
-                    d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"/></svg></span>
-            </a>
-            <a href="https://nicepage.com/k/youtube-website-templates"
-               className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-14">MONTH&nbsp;
-                <span className="u-icon u-text-palette-1-dark-2 u-icon-7"><svg className="u-svg-content"
-                                                                               viewBox="0 0 490.677 490.677" x="0px"
-                                                                               y="0px" style={{width: "1em", height: "1em"}}><path
-                    d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"/></svg></span>
-            </a>
-        </section>
+            </footer>
         </div>
     );
 }
