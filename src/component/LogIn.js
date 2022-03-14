@@ -4,7 +4,6 @@ function LogIn() {
   return (
     <div className="login">
       <header className="u-clearfix u-custom-color-1 u-header u-header" id="sec-a6c5"><div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <img className="u-image u-image-default u-preserve-proportions u-image-1" src="images/twitter_profile_image.png" alt="" data-image-width="800" data-image-height="800"/>
         <nav className="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div className="menu-collapse u-custom-font u-font-ubuntu" style={{fontSize: '1.25rem', letterSpacing: '0px'}}>
             <a className="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
@@ -14,17 +13,11 @@ function LogIn() {
             </a>
           </div>
           <div className="u-custom-menu u-nav-container">
-            <ul className="u-custom-font u-font-ubuntu u-nav u-unstyled u-nav-1"><li className="u-nav-item"><a className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style={{padding: '18px 32px'}}>Home</a>
-            </li><li className="u-nav-item"><a className="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Login-In.html" style={{padding: '18px 32px'}}>Log In</a>
-            </li></ul>
           </div>
           <div className="u-custom-menu u-nav-container-collapse">
             <div className="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div className="u-inner-container-layout u-sidenav-overflow">
                 <div className="u-menu-close"></div>
-                <ul className="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li className="u-nav-item"><a className="u-button-style u-nav-link" style={{padding: '18px 32px'}}>Home</a>
-                </li><li className="u-nav-item"><a className="u-button-style u-nav-link" href="Login-In.html" style={{padding: '18px 32px'}}>Log In</a>
-                </li></ul>
               </div>
             </div>
             <div className="u-black u-menu-overlay u-opacity u-opacity-70"></div>
@@ -59,20 +52,9 @@ function LogIn() {
       </section>
   
       <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3"><div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          <p className="u-small-text u-text u-text-variant u-text-1">@2022 IT5100A GROUP Copyright.</p>
+          <p className="u-small-text u-text u-text-variant u-text-1">@2022 Hido Copyright.</p>
       </div></footer>
 
-      <section className="u-backlink u-clearfix u-grey-80">
-        <a className="u-link" href="https://nicepage.com/website-templates" target="_blank">
-          <span>Website Templates</span>
-        </a>
-        <p className="u-text">
-          <span>created with</span>
-        </p>
-        <a className="u-link" href="" target="_blank">
-          <span>Website Builder Software</span>
-        </a>. 
-      </section>
     </div>
   );
 }
