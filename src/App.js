@@ -7,7 +7,8 @@ import {
   Navigation,
   Detail,
   Day,
-  Month
+  Month,
+  Todo
 } from "./component";
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/detail" element={<Detail/>}/>
         <Route path="/day" element={<Day/>}/>
         <Route path="/month" element={<Month/>}/>     
+        <Route path ="/todo" element={<Todo />} />
       </Routes>
     </div>
   );
