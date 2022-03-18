@@ -8,7 +8,8 @@ import {
   Detail,
   Day,
   Month,
-  Todo
+  Todo,
+  Week
 } from "./component";
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path ="/login" element={<LogIn />} />
         <Route path="/detail" element={<Detail/>}/>
         <Route path="/day" element={<Day/>}/>
+        <Route path="/week" element={<Week/>}/>
         <Route path="/month" element={<Month/>}/>     
         <Route path ="/todo" element={<Todo />} />
       </Routes>
