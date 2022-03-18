@@ -48,8 +48,7 @@ function Month() {
                    className="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-style u-none u-text-palette-1-base u-btn-5">Export</a>
                 <div className="u-border-3 u-border-grey-dark-1 u-line u-line-horizontal u-line-1"/>
                 <p className="u-custom-font u-font-ubuntu u-text u-text-default u-text-4">My Templates</p>
-                <img className="u-image u-image-default u-image-1" src="images/bd0c919f-0992-d658-6e0d-584048fd91e6.PNG"
-                     alt="" data-image-width="1918" data-image-height="1293"/>
+                <Week />
                 <a href="https://nicepage.com/k/youtube-website-templates"
                    className="u-border-none u-btn u-btn-round u-button-style u-grey-5 u-radius-3 u-text-palette-1-dark-2 u-btn-6">DAY&nbsp;
                     <span className="u-icon u-text-palette-1-dark-2 u-icon-5"><svg className="u-svg-content"
