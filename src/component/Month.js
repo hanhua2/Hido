@@ -1,5 +1,6 @@
 import React from "react";
 import '../Month.css';
+import Week from "./Week";
 
 function Month() {
     return (
