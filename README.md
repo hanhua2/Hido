@@ -1,6 +1,7 @@
 1. nvm install 14.
 
 2. npm install.
+3. npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction @fullcalendar/core @fullcalendar/list
 
 npm i uuid
 3. npm start
