@@ -1,7 +1,6 @@
 1. nvm install 14.
 
 2. npm install.
-3. npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction @fullcalendar/core @fullcalendar/list
 
 npm i uuid
 3. npm start
@@ -11,6 +10,7 @@ Home: http://localhost:3000/
 Login: http://localhost:3000/login
 Page1: http://localhost:3000/page1 
 Todo: http://localhost:3000/todo
+Month: http://localhost:3000/month
 
 Reference for Todo page: https://www.youtube.com/watch?v=nUl5QLkVdvU
 
