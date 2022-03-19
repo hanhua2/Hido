@@ -4,10 +4,6 @@ import '../login.css';
 function LogIn() {
   return (
    <div className="login">
-      <header className="u-clearfix u-custom-color-1 u-header u-header" id="sec-a6c5">
-        <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        </div>
-      </header>
       <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-8f98">
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <h1 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-1">Log In</h1>

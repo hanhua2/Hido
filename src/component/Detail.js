@@ -6,7 +6,7 @@ function Detail() {
         <div className="detail">
             <section className="u-clearfix u-section-1" id="sec-e779">
                 <div className="u-clearfix u-sheet u-sheet-1">
-                    <p className="u-text u-text-1">Create Time</p>
+                    <p className="u-text u-text-0">Create Time</p>
                     <h6 className="u-custom-font u-font-ubuntu u-text u-text-2"> February 25, 2022 3:11 PM</h6>
                     <div className="u-image u-image-circle u-preserve-proportions u-image-1" alt=""
                          data-image-width="800" data-image-height="800" />
