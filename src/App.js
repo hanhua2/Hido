@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import {Day, Detail, Home, LogIn, Month, Navigation, Set, Todo, Week} from "./component";
+import {Day, Detail, Home, LogIn, Month, Navigation, Set, Todo} from "./component";
 
 
 function App() {
@@ -13,8 +13,6 @@ function App() {
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/detail" element={<Detail/>}/>
                 <Route path="/day" element={<Day/>}/>
-                <Route path="/set" element={<Set/>}/>
-                <Route path="/week" element={<Week/>}/>
                 <Route path="/month" element={<Month/>}/>
                 <Route path="/todo" element={<Todo/>}/>
             </Routes>
