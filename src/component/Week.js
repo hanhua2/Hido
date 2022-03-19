@@ -35,7 +35,7 @@ function Week(){
                 dateClick={(e) => console.log(e.dateStr)}
                 eventClick={(e) => console.log(e.event.id)}
                 aspectRatio={0.5}
-                height={500}
+                height={600}
             />
         </div>
     );
