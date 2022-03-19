@@ -1,0 +1,26 @@
+.Home{
+  background-color: #f2f2f2;
+  height: 80vh;
+
+  &__image1 {
+    height: 600px;
+    width: 600px;
+    margin-right: 150px;
+    margin-top: 20px;
+  }
+
+  &__image2 {
+    height: 300px;
+    width: 300px;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  &__text1 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    height: 20px;
+    margin-top: 30px;
+    margin-left: -750px;
+  }
+}

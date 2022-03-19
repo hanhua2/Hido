@@ -36600,9 +36600,9 @@ a.u-link.u-text-hover-grey-90:hover {
         }
         h1:not(.u-title)
         {
-        font-size: 1.875rem;
+        font-size: 1.25rem;
         line-height: 1.1;
-        margin-top: 20px;
+        margin-top: -200px;
         margin-bottom: 20px;
         font-weight: 700;
         list-icon-spacing: 0.3;
