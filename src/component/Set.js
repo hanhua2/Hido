@@ -82,7 +82,7 @@ const Set = () => {
                 ))
             }
         </div>
-        <button className={"logout"}>
+        <button className={"sidebar__logout"}>
             Log out
         </button>
     </div>)
