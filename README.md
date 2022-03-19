@@ -2,6 +2,8 @@
 
 2. npm install.
 
+3. npm rebuild node-sass
+
 npm i uuid
 3. npm start
 
