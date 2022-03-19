@@ -1,16 +1,16 @@
 .sidebar {
   position: fixed;
-  top: 0;
+  top: 98px;
   left: 0;
   height: 100vh;
   width: 250px;
-  background-color: #fff;
+  background-color: #f2f2f2;
 
   &__logo {
     display: grid;
     place-items: center;
     height: 120px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     font-family: 'Mochiy Pop P one', sans-serif;
   }
