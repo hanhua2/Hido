@@ -28,7 +28,7 @@ function Home() {
       </header>
 
       <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-8fe3">
-        <div className="u-clearfix u-sheet u-valign-top u-sheet-1">
+        <div id = "home-image" className="u-clearfix u-sheet u-valign-top u-sheet-1">
           <img className="u-image u-image-default u-image-1" src="images/5d62543402daf1566725172569.png" alt="" data-image-width="8334" data-image-height="8334" />
           <img className="u-image u-image-default u-preserve-proportions u-image-2" src="images/twitter_profile_image.png" alt="" data-image-width="800" data-image-height="800"/>
           <h1 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-1">Make Life Efficient</h1>

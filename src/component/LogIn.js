@@ -10,8 +10,8 @@ function LogIn() {
       </header>
       <section className="u-clearfix u-custom-color-1 u-section-1" id="sec-8f98">
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
-          <h1 className="u-custom-font u-font-ubuntu u-text u-text-default u-text-1">Log In</h1>
-          <a href="https://nicepage.com/k/test-website-templates"
+        <img id="login-icon" className="login-image" src="images/twitter_profile_image.png" alt="" data-image-width="400" data-image-height="400"/>
+          <a href="https://nicepage.com/k/test-website-templates" id = "google-account"
              className="u-border-1 u-border-white u-btn u-btn-round u-button-style u-gradient u-none u-radius-15 u-text-grey-60 u-text-hover-grey-60 u-btn-1">Continue
             with Google Account&nbsp;</a>
           <div className="u-form u-form-1">
@@ -30,7 +30,7 @@ function LogIn() {
                        required="" />
               </div>
               <div className="u-align-center u-form-group u-fom-submit">
-                <a href="#"
+                <a id="login-button" href="#"
                    className="u-border-1 u-border-black u-btn u-btn-round u-btn-submit u-button-style u-hover-black u-none u-radius-19 u-text-black u-text-hover-white u-btn-2">Login</a>
                 <input type="submit" value="submit" className="u-form-control-hidden" />
               </div>

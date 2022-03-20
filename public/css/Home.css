@@ -12,6 +12,15 @@
   width: 374px;
   height: 374px;
   margin: -412px auto 0 79px;
+  
+}
+
+#home-image .u-image-2{
+  left: -160px;
+}
+
+#home-image .u-image-1{
+  left: 100px;
 }
 
 .u-section-1 .u-text-1 {
