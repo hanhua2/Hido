@@ -2,6 +2,8 @@
 
 2. npm install.
 
+3. npm rebuild node-sass
+
 npm i uuid
 3. npm start
 
@@ -10,6 +12,7 @@ Home: http://localhost:3000/
 Login: http://localhost:3000/login
 Page1: http://localhost:3000/page1 
 Todo: http://localhost:3000/todo
+Month: http://localhost:3000/month
 
 Reference for Todo page: https://www.youtube.com/watch?v=nUl5QLkVdvU
 
