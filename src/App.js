@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import {Day, Detail, Home, LogIn, Month, Navigation, Set, Todo} from "./component";
-
+import {Day, Detail, Home, LogIn, Month, Navigation} from "./component";
 
 function App() {
     return (
@@ -14,7 +13,6 @@ function App() {
                 <Route path="/detail" element={<Detail/>}/>
                 <Route path="/day" element={<Day/>}/>
                 <Route path="/month" element={<Month/>}/>
-                <Route path="/todo" element={<Todo/>}/>
             </Routes>
         </div>
     );

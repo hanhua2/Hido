@@ -22,11 +22,6 @@ function Navigation() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/todo">
-                  Todo
-                </NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink className="nav-link" to="/detail">
                   Detail
                 </NavLink>

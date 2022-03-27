@@ -3,7 +3,5 @@ export { default as LogIn } from "./LogIn";
 export { default as Navigation } from "./Navigation";
 export { default as Detail } from "./Detail";
 export { default as Day } from "./Day";
-export { default as Set } from "./Set";
-export { default as Week } from "./Week";
 export { default as Month } from "./Month";
 export { default as Todo } from "./Todos/Todo";
