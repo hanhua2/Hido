@@ -9,9 +9,9 @@ npm i uuid
 
 
 Home: http://localhost:3000/
-Login: http://localhost:3000/login
-Page1: http://localhost:3000/page1 
-Todo: http://localhost:3000/todo
+Register: http://localhost:3000/register
+Login: http://localhost:3000/login 
+Day: http://localhost:3000/day
 Month: http://localhost:3000/month
 
 Reference for Todo page: https://www.youtube.com/watch?v=nUl5QLkVdvU
