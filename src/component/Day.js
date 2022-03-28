@@ -2,6 +2,7 @@ import React from "react";
 import '../Month.css';
 import Set from "./Set";
 import Todo from "./Todos/Todo";
+import Done from "./Todos/Done";
 
 const Day = () => {
     return <div style={{
@@ -12,6 +13,7 @@ const Day = () => {
         <button style={{margin:"20px 20px 20px 800px"}}>Sort</button>
         <button >Export</button>
         <Todo />
+        <Done />
     </div>;
 };
 
