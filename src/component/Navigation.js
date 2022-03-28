@@ -12,33 +12,33 @@ function Navigation() {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/">
-                  Home
+                  HOME
                   <span className="sr-only">(current)</span>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/register">
-                  Register
+                  REGISTER
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
-                  Login
+                  LOGIN
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/detail">
-                  Detail
+                  DETAIL
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/day">
-                  Day
+                  DAY
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/month">
-                  Month
+                  MONTH
                 </NavLink>
               </li>
             </ul>

@@ -6,9 +6,7 @@ function Register() {
         <div className="Register">
             <img  className="login-image" src="images/twitter_profile_image.png" alt=""/>
             <div>
-                <a href="https://nicepage.com/k/test-website-templates" id = "google-account" className="google-login">
-                    Continue with Google Account&nbsp;
-                </a>
+                <h3 className={"account"}>CREATE NEW ACCOUNT</h3>
             </div>
 
 
