@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-weight: bold;
+}
+
+.month {
+    margin-top: 100px;
+}
+
+.nav {
+    margin-right: 50px;
+    text-align: right;
+}
+.button-white {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    margin:auto;
+}
+
+.button-white:hover
+{background-color: #e7e7e7;}
+
+
+.button svg {
+    width: 18px;
+    height: auto;
+    display: flex;
+    margin:auto;
+}

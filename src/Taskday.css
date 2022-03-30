@@ -1,0 +1,49 @@
+.day {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border-top: 2px solid #e7e7e7;
+    border-right: 2px solid #e7e7e7;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #e7e7e7;
+}
+
+.task-day {
+    display: flex;
+    gap: 10px;
+}
+
+.task-day h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.tasks {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.tasks p {
+    text-align: left;
+    margin: 1px 0px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.selected-day {
+    background-color: #e9e9e9;
+}
+
+.current-day {
+    color: #e72f2f;
+}

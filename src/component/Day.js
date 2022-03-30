@@ -1,5 +1,4 @@
 import React from "react";
-import '../Month.css';
 import Set from "./Set";
 import Todo from "./Todos/Todo";
 import Done from "./Todos/Done";

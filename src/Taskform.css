@@ -1,0 +1,145 @@
+.task-form {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.task-form label{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.task-form input[type=text] {
+    font-size: 2rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+
+.task-form > div:nth-child(4) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-form > div:nth-child(5) {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-form button {
+    flex: 1;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 3px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 16px;
+    margin: 2px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-orange {
+    background-color: white;
+    color: black;
+    border: 2px solid #ffae00;
+}
+
+.button-orange:hover {
+    background-color: #ffae00;
+    color: white;
+}
+
+.button-grey {
+    background-color: white;
+    color: black;
+    border: 2px solid #ada9a9;
+    margin-left: 90px;
+}
+
+.button-grey:hover {
+    background-color: #ada9a9;
+    color: white;
+}
+
+.button-green {
+    background-color: white;
+    color: black;
+    border: 2px solid #87c075;
+}
+
+.button-green:hover {
+    background-color: #87c075;
+    color: white;
+}
+
+.button-blue {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+.button-blue:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button-red {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+    margin-left: 80px;
+}
+
+.button-red:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.button-white {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.button-white:hover {background-color: #e7e7e7;}
+
+.error {
+    margin: 0;
+    padding: 5px;
+    color: #e7e7e7;
+    background-color: #eb4a3f;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+input::placeholder{
+    color: #e4e4e4
+}
+
+.square {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    margin-left: 150px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.square-text {
+    margin: auto;
+    font-weight: 500;
+}
