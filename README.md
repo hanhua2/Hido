@@ -3,8 +3,12 @@
 2. npm install.
 
 3. npm rebuild node-sass
+   npm i uuid
+4. npm start
 
-npm i uuid
+If not work dut the version imcompatiblity, try the following step:
+1. nvm install 14
+2. sudo rm -rf node_modules package-lock.json && npm install
 3. npm start
 
 
