@@ -1,0 +1,16 @@
+scalar GraphQLDate
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  created: GraphQLDate!
+}
+
+type Query {
+  about: String!
+}
+
+type Mutation {
+  setAboutMessage(message: String!): String
+}
