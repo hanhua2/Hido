@@ -10,7 +10,7 @@
 
 6. node server/server.js
 
-7. npm start
+7. npm start(In another shell)
 
 Home: http://localhost:3000/
 Register: http://localhost:3000/register
