@@ -19,7 +19,20 @@
     font-size: 1rem;
     font-weight: 700;
     margin-top: 280px;
-    margin-left: -50px;
+    margin-left: -60px;
+    background-color: #f2f2f2;
+    border: none;
+    color: #494848;
+    padding: 3px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  &__logout:hover{
+    border: 3px solid #6e6d6d;
   }
   &__menu {
     position: relative;
@@ -44,6 +57,24 @@
         i {
           font-size: 1.75rem;
         }
+      }
+
+      &__button {
+        background-color: #f2f2f2;
+        border: none;
+        color: #494848;
+        padding: 3px 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-flex;
+        font-size: 16px;
+        margin: auto;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      &__button:hover{
+        border: 3px solid #6e6d6d;
       }
     }
 

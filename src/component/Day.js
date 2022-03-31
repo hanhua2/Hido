@@ -2,6 +2,7 @@ import React from "react";
 import Set from "./Set";
 import Todo from "./Todos/Todo";
 import Done from "./Todos/Done";
+import "../Day.css"
 
 const Day = () => {
     return <div style={{
@@ -9,8 +10,8 @@ const Day = () => {
     }}>
         <Set />
         <h3 style={{textAlign:"left", margin:"-20px"}}>2022.2.24 To do List</h3>
-        <button style={{margin:"20px 20px 20px 800px"}}>Sort</button>
-        <button >Export</button>
+        <button className={"function"} style={{margin:"20px 20px 20px 800px"}}>Sort</button>
+        <button className={"function"}>Export</button>
         <Todo />
         <Done />
     </div>;

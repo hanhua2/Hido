@@ -18,6 +18,9 @@ const Month = () => {
                 <Calendar />
                 <TaskForm/>
             </CalendarState>
+            <button className={"monthexport"}>
+                Export to Google Calendar
+            </button>
         </div>
 
     </div>;

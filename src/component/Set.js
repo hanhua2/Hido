@@ -19,13 +19,13 @@ const sidebarNavItems = [
     {
         display: '  Day  ',
         icon: <i className='bx bx-day'></i>,
-        to: '/',
+        to: '/day',
         section: ''
     },
     {
         display: ' Month ',
         icon: <i className='bx bx-month'></i>,
-        to: '/started',
+        to: '/month',
         section: 'started',
         contents:['']
     }
@@ -74,12 +74,13 @@ const Set = () => {
                             <div className="sidebar__menu__item__icon">
                                 {item.icon}
                             </div>
-                            <button className="sidebar__menu__item__text">
+                            <button className="sidebar__menu__item__button">
                                 {item.display}
                             </button>
                         </div>
                     </Link>
                 ))
+
             }
         </div>
         <button className={"sidebar__logout"}>
