@@ -8,7 +8,7 @@ In another shell(API on port 5000):
 1. mkdir -p /data/db
 2. screen mongod
 3. Ctrl A+D
-4. cd hido/server
+4. cd /hido/server
 5. npm install
 6. npm start
 
