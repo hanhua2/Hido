@@ -1,8 +1,8 @@
+nvm install 14.
 In one shell(UI on port 3000):
-1. nvm install 14.
-2. cd hido
-3. npm install
-4. npm start
+1. cd hido
+2. npm install
+3. npm start
 
 In another shell(API on port 5000):
 1. mkdir -p /data/db
