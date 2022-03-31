@@ -1,16 +1,16 @@
+In one shell(UI on port 3000):
 1. nvm install 14.
+2. cd hido
+3. npm install
+4. npm start
 
-2. npm install.
-
-3. mkdir -p /data/db
-
-4. screen mongod
-
-5. Ctrl A+D
-
-6. node server/server.js
-
-7. npm start(In another shell)
+In another shell(API on port 5000):
+1. mkdir -p /data/db
+2. screen mongod
+3. Ctrl A+D
+4. cd hido/server
+5. npm install
+6. npm start
 
 Home: http://localhost:3000/
 Register: http://localhost:3000/register
