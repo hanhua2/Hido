@@ -7,6 +7,7 @@ In one shell(UI on port 3000):
 4. npm start
 
 In another shell(API on port 5000):
+
 Initially need to create a database called Hido in mongodb.
 1. git clone https://github.com/hanhua2/hido.git
 2. mkdir -p /data/db
