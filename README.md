@@ -2,8 +2,15 @@
 
 2. npm install.
 
-3. npm start
+3. mkdir -p /data/db
 
+4. screen mongod
+
+5. Ctrl A+D
+
+6. node server/server.js
+
+7. npm start(In another shell)
 
 Home: http://localhost:3000/
 Register: http://localhost:3000/register
