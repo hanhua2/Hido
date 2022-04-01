@@ -1,8 +1,8 @@
 ### nvm install 14
+### git clone https://github.com/hanhua2/hido.git
 
-1. git clone https://github.com/hanhua2/hido.git
 In one shell(UI on port 3000):
-1. cd UI
+1. cd /hido/UI
 2. npm install
 3. npm start
 
@@ -12,7 +12,7 @@ Initially need to create a database called Hido in mongodb.
 1. mkdir -p /data/db
 2. screen mongod
 3. Ctrl A+D
-4. cd API
+4. cd /hido/API
 5. npm install
 6. npm start
 
