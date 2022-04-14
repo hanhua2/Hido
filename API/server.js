@@ -31,9 +31,12 @@ const GraphQLDate = new GraphQLScalarType({
 const resolvers = {
     Query: {
         about: () => aboutMessage,
+        taskList,
     },
     Mutation: {
         setAboutMessage,
+        taskAdd,
+        taskDelete,
     },
     GraphQLDate,
 };
@@ -41,6 +44,38 @@ const resolvers = {
 function setAboutMessage(_, {message}) {
     return aboutMessage = message;
 }
+
+async function taskList() {
+    const tasks = await db.collection('tasks').find({}).toArray();
+    return tasks;
+}
+
+async function taskAdd(_, { task }) {
+    const result = await db.collection('tasks').insertOne(task);
+    const savedTask = await db.collection('tasks')
+      .findOne({ _id: result.insertedId });
+    return savedTask;
+  }
+  
+async function taskDelete(_, { taskID }) {
+    const deletedTask = await db.collection('tasks').findOne({ id: taskID });
+    const result = await db.collection('tasks').deleteOne(
+        {id :  taskID}
+    );
+    return deletedTask;
+}
+
+/*
+async function setDb(_, { db }) {
+
+    const deletedTask = await db.collection('tasks').findOne({ id: taskID });
+    const result = await db.collection('tasks').deleteOne(
+        {id :  taskID}
+    );
+    return deletedTask;
+} */
+
+
 
 async function connectToDb() {
     const client = new MongoClient(url, {useNewUrlParser: true});

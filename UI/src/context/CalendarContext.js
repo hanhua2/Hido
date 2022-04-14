@@ -6,21 +6,90 @@ const SET_TASK = "SET_TASK";
 const SAVE_TASK = "SAVE_TASK";
 const DELETE_TASK = "DELETE_TASK";
 
-const getDatabase = ()=> {
+const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
+
+function jsonDateReviver(key, value) {
+  if (dateRegex.test(value)) return new Date(value);
+  return value;
+}
+
+
+async function graphQLFetch(query, variables = {}) {
+  try {
+    const response = await fetch('http://localhost:5000/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({ query, variables })
+    });
+    const body = await response.text();
+    const result = JSON.parse(body, jsonDateReviver);
+
+    if (result.errors) {
+      const error = result.errors[0];
+      if (error.extensions.code == 'BAD_USER_INPUT') {
+        const details = error.extensions.exception.errors.join('\n ');
+        alert(`${error.message}:\n ${details}`);
+      } else {
+        alert(`${error.extensions.code}: ${error.message}`);
+      }
+    }
+    return result.data;
+  } catch (e) {
+    alert(`Error in sending data to server: ${e.message}`);
+  }
+}
+
+const getDatabase = async ()=> {
+  const query = `query {
+    taskList {
+      date, name, color, status, priority, comment, id,
+    }
+  }`
+  const data = await graphQLFetch(query);
+  let db = data.taskList;
+  db.map(task=> task.date = new Date(task.date));
+  return db;
+}
+
+async function taskAdd(task) {
+  const query = `mutation myMutation($task:TaskInput!){
+    taskAdd(task: $task) {
+      id 
+      name 
+      priority
+    }
+  }`
+  const data = await graphQLFetch(query, {task});
+}
+
+async function taskDelete(taskID) {
+  const query = `mutation myMutation($taskID:String!){
+    taskDelete(taskID: $taskID) {
+    name
+    id }
+  }`
+  const data = await graphQLFetch(query, {taskID});
+}
+
+
+/*
+const getDatabase = ()=> {  
   let db = localStorage.getItem("$calendar_db");
+  
   if(!db) {
     db = [];
     setDatabase(db);
   } else {
     db = JSON.parse(db);    
     db.map(task=> task.date = new Date(task.date));
-  }
+  } 
   return db;
-}
+} */
 
+/*
 const setDatabase = (db)=> {
   localStorage.setItem("$calendar_db", JSON.stringify(db));
-}
+} */
 
 export const CalendarContext = createContext();
 
@@ -30,7 +99,9 @@ export const sameDay = (a, b) => {
       && a.getFullYear() === b.getFullYear();
 }
 
+
 function CalendarState(props) {
+  
   
   const initialState = {
     date: new Date(),
@@ -38,20 +109,18 @@ function CalendarState(props) {
     task: null
   };
 
+  
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case SET_DATE: // Set current date
-
-        const date = action.payload;
+        const date = action.payload.date;
+        const db = action.payload.db;
         // Calendar Start Day
         const d1 = new Date(date.getFullYear(), date.getMonth()    , 1);
         d1.setDate(d1.getDate() - (d1.getDay() === 0 ? 7 : d1.getDay()));
         // Calendart End Day
         const d2 = new Date(date.getFullYear(), date.getMonth() + 1, 0);
         if(d2.getDay() !== 0) d2.setDate(d2.getDate() + (7 - d2.getDay()));
-        
-        const db = getDatabase();
-  
         const days = [];
         do { // Obtain tasks
           d1.setDate(d1.getDate() + 1); // iterate            
@@ -71,9 +140,10 @@ function CalendarState(props) {
           ...state,
           task: action.payload
         }
+
       case SAVE_TASK: {
-        let db = getDatabase();
-        const task = action.payload;
+        let db = action.payload.db;
+        const task = action.payload.task;
         if(!task.id) { // new Task
           task.id = uuidv4();
           db.push(task);
@@ -82,17 +152,18 @@ function CalendarState(props) {
             return t.id === task.id ? task : t;
           })
         }
-        setDatabase(db);
+        //setDatabase(db);
         return {
           ...state
         }
       }
       case DELETE_TASK : {
-        let db = getDatabase();
+        let db = action.payload.db;
+        const taskID = action.payload.taskID;
         db = db.filter((task)=> {
-          return task.id !== action.payload;
+          return task.id !== taskID;
         });
-        setDatabase(db);
+        //setDatabase(db);
         return {
           ...state,
         }
@@ -103,32 +174,37 @@ function CalendarState(props) {
   }, initialState);
 
 
-  const setDate = (date)=> {
+  async function setDate(date) {
+    const db = await getDatabase();
     dispatch({
       type: SET_DATE,
-      payload: date
+      payload: {date: date, db: db}
     });
   }
 
-  const setTask = (task)=> {
+  function setTask(task) {
     dispatch({
       type: SET_TASK,
       payload: task
     });
   }
 
-  const saveTask = (task)=> {
+  async function saveTask(task) {
+    const db = await getDatabase();
     dispatch({
       type: SAVE_TASK,
-      payload: task
+      payload: {task: task, db: db}
     })
+    await taskAdd(task);
   }
 
-  const deleteTask = (taskId)=> {
+  async function deleteTask(taskId) {
+    const db = await getDatabase();
     dispatch({
       type: DELETE_TASK,
-      payload: taskId
+      payload: {taskId: taskId, db: db}
     })
+    await taskDelete(taskId);
   }
   
   return (

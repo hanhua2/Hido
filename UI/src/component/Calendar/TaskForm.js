@@ -68,7 +68,7 @@ function TaskForm() {
         setError(false);
     };
 
-    const _saveTask = () => {
+    const _saveTask = async() => {
 
         if(name.trim().length < 1) {
             setError(true);
@@ -76,7 +76,7 @@ function TaskForm() {
         }
         setError(false);
 
-        saveTask({
+        await saveTask({
             ...task,
             date: date,
             name: name,
@@ -85,14 +85,14 @@ function TaskForm() {
             priority: priority,
             comment: comment
         });
-        setDate(date);
+        await setDate(date);
         closeModal();
 
     };
 
-    const _deleteTask = ()=> {
-        deleteTask(task.id);
-        setDate(date);
+    const _deleteTask = async()=> {
+        await deleteTask(task.id);
+        await setDate(date);
         closeModal();
         setError(false);
     }

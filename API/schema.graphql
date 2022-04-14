@@ -1,16 +1,33 @@
 scalar GraphQLDate
 
-type User {
-  id: Int!
+type Task {
+  date: GraphQLDate!
   name: String!
-  email: String!
-  created: GraphQLDate!
+  color: String!
+  status: String
+  priority: String!
+  comment: String!
+  id: String!
 }
+
+input TaskInput {
+  date: GraphQLDate!
+  name: String!
+  color: String!
+  status: String!
+  priority: String!
+  comment: String!
+  id: String!
+}
+
 
 type Query {
   about: String!
+  taskList: [Task!]!
 }
 
 type Mutation {
   setAboutMessage(message: String!): String
+  taskAdd(task: TaskInput!): Task!
+  taskDelete(taskID: String!): Task!
 }
