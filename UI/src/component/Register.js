@@ -1,7 +1,75 @@
-import React from "react";
+import React, {useState} from "react";
 import '../register.scss';
+import {gql, useMutation} from "@apollo/client";
+import { Button, Form } from 'semantic-ui-react';
+
+const REGISTER_USER = gql`
+    mutation registeruser(
+        $lastname: String!
+        $firstname: String!
+        $email: String!
+        $password: String!
+        $confirmPassword: String!
+    ) {
+        registeruser(
+            registerInput: {
+                lastname: $lastname
+                firstname: $firstname
+                email: $email
+                password: $password
+                confirmPassword: $confirmPassword
+            }
+        ) {
+            lastname
+            firstname
+            email
+            password
+            created
+        }
+    }
+`;
+
+const useForm = (callback, initialState = {}) => {
+    const [values, setValues] = useState(initialState);
+
+    const onChange = (event) => {
+        setValues({ ...values, [event.target.name]: event.target.value });
+    };
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        callback();
+    };
+
+    return {
+        onChange,
+        onSubmit,
+        values,
+    };
+};
 
 function Register() {
+    const [errors, setErrors] = useState({});
+
+    const { onChange, onSubmit, values } = useForm(registerUser, {
+        lastname: '',
+        firstname: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
+    const [addUser, {data, loading, error}] = useMutation(REGISTER_USER, {
+        onError(err) {
+            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        },
+        variables: values
+    });
+
+    function registerUser() {
+        addUser();
+    }
+
     return (
         <div className="Register">
             <img  className="login-image" src="images/twitter_profile_image.png" alt=""/>
@@ -9,15 +77,29 @@ function Register() {
                 <h3 className={"account"}>CREATE NEW ACCOUNT</h3>
             </div>
 
+            <Form onSubmit={onSubmit} noValidate className={"register-form"}>
+                <Form.Input label='Lastname' placeholder="Last Name" name={"lastname"} type="text" value={values.lastname}
+                            onChange={onChange} className="form-lastname"/>
+                <Form.Input label='Firstname' placeholder="First Name" name={"firstname"} type="text" value={values.firstname}
+                            onChange={onChange} className="form-firstname"/>
+                <Form.Input label='Email' placeholder="Please Set Your Email" name={"email"} type="email" value={values.email}
+                            onChange={onChange} className="form-email"/>
+                <Form.Input label='Password' placeholder="Please Set Your Password" name={"password"} type="password" value={values.password}
+                            onChange={onChange} className="form-password"/>
+                <Form.Input label='Confirmpassword' placeholder="Please Retype Your Password" name={"confirmPassword"} type="password" value={values.confirmPassword}
+                            onChange={onChange} className="form-password2"/>
+                <Button type={"submit"} primary>Register</Button>
+            </Form>
 
-            <form className="register-form" source="custom" name="form" style={{padding: "10px"}}>
-                <input type="lastname" placeholder="Last Name" name="lastname" className="form-lastname" />
-                <input type="firstname" placeholder="First Name" name="firstname" className="form-firstname" />
-                <input type="email" placeholder="Please Set Your Email" name="email" className="form-input" />
-                <input type="text" placeholder="Please Set Your Password" name="Password" className="form-password"/>
-                <input type="text" placeholder="Please Retype Your Password" name="Password2" className="form-password2"/>
-                <button className ="submit">Register</button>
-            </form>
+            {Object.keys(errors).length > 0 && (
+                <div className="ui error message">
+                    <ul className="list">
+                        {Object.values(errors).map((value) => (
+                            <li key={value}>{value}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
 
             <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">
                 <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">

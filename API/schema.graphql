@@ -1,4 +1,20 @@
 scalar GraphQLDate
+type User {
+  id: ID!
+  lastname: String!
+  firstname: String!
+  email: String!
+  password: String!
+  created: String!
+}
+
+input RegisterInput {
+  lastname: String!
+  firstname: String!
+  email: String!
+  password: String!
+  confirmPassword: String!
+}
 
 type Task {
   date: GraphQLDate!
@@ -20,14 +36,16 @@ input TaskInput {
   id: String!
 }
 
-
 type Query {
   about: String!
   taskList: [Task!]!
+  userList: [User!]!
 }
 
 type Mutation {
   setAboutMessage(message: String!): String
+  registeruser(registerInput: RegisterInput): User!
+  login(email: String!, password: String!): User!
   taskAdd(task: TaskInput!): Task!
   taskDelete(taskID: String!): Task!
 }

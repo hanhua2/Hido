@@ -1,5 +1,6 @@
 const fs = require('fs');
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const {ApolloServer, UserInputError} = require('apollo-server-express');
 const {GraphQLScalarType} = require('graphql');
 const {Kind} = require('graphql/language');
@@ -18,7 +19,7 @@ const GraphQLDate = new GraphQLScalarType({
         return value.toISOString();
     },
     parseValue(value) {
-        return  new Date(value);
+        return new Date(value);
     },
     parseLiteral(ast) {
         if (ast.kind === Kind.STRING) {
@@ -28,13 +29,66 @@ const GraphQLDate = new GraphQLScalarType({
     },
 });
 
+const validateRegisterInput = (
+    lastname, firstname, email, password, confirmPassword
+) => {
+    const errors = {};
+    if (lastname.trim() === "") {
+        errors.lastname = 'Lastname must not be empty, please try again';
+    }
+    if (firstname.trim() === "") {
+        errors.firstname = 'Firstname must not be empty, please try again';
+    }
+    if (email.trim() === '') {
+        errors.email = 'Email must not be empty, please try again';
+    } else {
+        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+        if (!email.match(regEx)) {
+            errors.email = 'Email must be a valid email address, please try again';
+        }
+    }
+    if (password === '') {
+        errors.password = 'Password must not empty';
+    } else if (password !== confirmPassword) {
+        errors.confirmPassword = 'Passwords must match';
+    }
+
+    return {
+        errors,
+        valid: Object.keys(errors).length < 1
+    };
+};
+
+const validateLoginInput = (
+    email, password
+) => {
+    const errors = {};
+    if (email.trim() === '') {
+        errors.email = 'Email must not be empty, please try again';
+    } else {
+        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+        if (!email.match(regEx)) {
+            errors.email = 'Email must be a valid email address, please try again';
+        }
+    }
+    if (password.trim() === '') {
+        errors.password = 'Password must not be empty';
+    }
+    return {
+        errors,
+        valid: Object.keys(errors).length < 1
+    };
+};
+
 const resolvers = {
     Query: {
         about: () => aboutMessage,
         taskList,
+        userList,
     },
     Mutation: {
         setAboutMessage,
+        registeruser,
         taskAdd,
         taskDelete,
     },
@@ -45,22 +99,87 @@ function setAboutMessage(_, {message}) {
     return aboutMessage = message;
 }
 
+async function userList() {
+    const users = await db.collection('users').find({}).toArray();
+    return users;
+}
+
 async function taskList() {
     const tasks = await db.collection('tasks').find({}).toArray();
     return tasks;
 }
 
-async function taskAdd(_, { task }) {
+async function registeruser(_, {
+    registerInput: {lastname, firstname, email, password, confirmPassword}
+}) {
+    const {errors, valid} = validateRegisterInput(lastname, firstname, email, password, confirmPassword);
+    if (!valid) {
+        throw new UserInputError('Errors', {errors});
+    }
+
+    /*
+    const user = await db.collection('users').findOne({'email': email})
+
+    if (user) {
+        throw new UserInputError('Email has been taken.', {
+            errors: {
+                email: 'This email has been taken'
+            }
+        });
+    }
+    */
+
+    password = await bcrypt.hash(password, 12);
+
+    const result = await db.collection('users').insertOne({
+        "lastname":lastname, "firstname":firstname, "email":email, "password":password, "created": new Date()
+    })
+
+    const savedUser = await db.collection('users')
+        .findOne({_id: result.insertedId});
+
+    return savedUser;
+}
+
+async function login(_, {email, password}){
+    const {errors, valid} = validateLoginInput(email, password);
+
+    if (!valid) {
+        throw new UserInputError('Errors', { errors });
+    }
+
+
+    const user = await db.collection('users').findOne({'email': email});
+
+    if (!user) {
+        errors.general = 'User not found';
+        throw new UserInputError('User not found', { errors });
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+        errors.general = 'Wrong password';
+        throw new UserInputError('Wrong password', { errors });
+    }
+
+    return {
+        ...user._doc,
+        id : user._id,
+    };
+}
+
+async function taskAdd(_, {task}) {
     const result = await db.collection('tasks').insertOne(task);
     const savedTask = await db.collection('tasks')
-      .findOne({ _id: result.insertedId });
+        .findOne({_id: result.insertedId});
     return savedTask;
-  }
-  
-async function taskDelete(_, { taskID }) {
-    const deletedTask = await db.collection('tasks').findOne({ id: taskID });
+}
+
+async function taskDelete(_, {taskID}) {
+    const deletedTask = await db.collection('tasks').findOne({id: taskID});
     const result = await db.collection('tasks').deleteOne(
-        {id :  taskID}
+        {id: taskID}
     );
     return deletedTask;
 }
@@ -74,7 +193,6 @@ async function setDb(_, { db }) {
     );
     return deletedTask;
 } */
-
 
 
 async function connectToDb() {

@@ -7,13 +7,13 @@ function App() {
     return (
         <div className="App">
             <Navigation/>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/login" element={<LogIn/>}/>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/day" element={<Day/>}/>
-                <Route path="/month" element={<Month/>}/>
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/login" element={<LogIn/>}/>
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/day" element={<Day/>}/>
+                    <Route path="/month" element={<Month/>}/>
+                </Routes>
         </div>
     );
 }
