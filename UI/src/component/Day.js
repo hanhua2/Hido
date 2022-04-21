@@ -80,12 +80,21 @@ const FILTER_MAP = {
   Done: task => task.status === "Done"
 };  
 
+const PRIORITY_MAP = {
+  "Primary" : 1,
+  "Urgent" : 2,
+  "Normal" : 3,
+  "No Rush" : 4
+}
+
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function Day(props) {
-  const [filter, setFilter] = useState('Todo');
+  const [filter, setFilter] = useState('All');
   const [tasks, setTasks] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [sorted, setSorted] = useState(false);
+
 
   const fetchData = async() => {
     const query = `query {
@@ -104,7 +113,6 @@ function Day(props) {
     fetchData();
   }, []); 
 
-  console.log(startDate);
 
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {   
@@ -114,23 +122,25 @@ function Day(props) {
       return task;
     });
     setTasks(updatedTasks);
+    const newTask = tasks.filter(task => {return task.id === id})
+    .map(task => {return {...task, status: task.status === "Done" ? "To do": "Done"}});
+    taskUpdate(newTask[0]);  
   }
 
-
-  async function addTask(name) {
-    const newTask = { id: "todo-" + uuidv4(), name: name, status: "To do", color : "#d2635b", priority : "Normal", comment : "", date : startDate  };
+  function addTask(name, priority) {
+    const newTask = { id: "todo-" + uuidv4(), name: name, status: "To do", color : "#d2635b", priority : priority, comment : "", date : startDate  };
     taskAdd(newTask);
     setTasks([...tasks, newTask]);
   }
 
-  async function deleteTask(id) {
+  function deleteTask(id) {
     taskDelete(id);
     const remainingTasks = tasks.filter(task => id !== task.id);
     setTasks(remainingTasks);
   }
 
 
-  async function editTask(id, newName) {
+  function editTask(id, newName) {
     const editedTaskList = tasks.map(task => {
       if (id === task.id) {
         return {...task, name: newName}
@@ -142,6 +152,14 @@ function Day(props) {
     console.log(newTask[0]);
     taskUpdate(newTask[0]);
   }
+
+  function sortTask() {
+    const sortedTasks = tasks.map(task => {task.idx = PRIORITY_MAP[task.priority]; return task})
+    sortedTasks.sort((a, b) => (a.idx > b.idx) ? 1 : -1);
+    sortedTasks.map(task => {
+      delete task.idx;  return task});
+    setTasks(sortedTasks);
+  } 
 
   const sameDay = (a, b) => {
     return a.getDate()     === b.getDate()
@@ -156,6 +174,7 @@ function Day(props) {
       id={task.id}
       name={task.name}
       status={task.status}
+      priority={task.priority}
       key={task.id}
       toggleTaskCompleted={toggleTaskCompleted}
       deleteTask={deleteTask}
@@ -174,16 +193,17 @@ function Day(props) {
   ));
 
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
-  const formHeading = `${taskList.length} ${tasksNoun}`;
+  const formHeading = `${taskList.length} ${tasksNoun} left`;
   const dateHeading = `${startDate.getMonth()+1}-${startDate.getUTCDate()}-${startDate.getFullYear()} To do List`
 
   return (
     <div className="todoapp stack-large" id = "resize">
-      <button className={"function"} style={{margin:"10px 20px 0px 600px"}}>Sort</button>
+      <button className={"function"} style={{margin:"10px 20px 0px 600px"}} onClick={()=> sortTask()} >Sort</button>
       <button className={"function"}>Export</button>
       <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
     
       <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
+      
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
@@ -194,6 +214,7 @@ function Day(props) {
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
+        id="task-display"
       >
         {taskList}
       </ul>

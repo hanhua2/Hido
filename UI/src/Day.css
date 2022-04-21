@@ -19,14 +19,49 @@
 #dateheading {
   margin-left: -160px;
   margin-top: -80px;
-  margin-bottom: 0px;
+  margin-bottom: -20px;
 }
 
 .datepicker {
-  margin-bottom: 20px;
-  margin-left: -488px
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-left: -488px;
 }
 
+
+.todo-label {
+  text-align:center;
+}
+
+#new-todo-input {
+  width: 60%;
+  height: 60px;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+
+#new-todo-input::placeholder {
+  font-size: 2rem;
+  text-align: left;
+  color:gray;
+}
+
+
+
+#priority-slt {
+  width: 20%;
+  height: 100%;
+  margin-top: -10px;
+  align-self: center;
+  border: none;
+}
+
+#add-button {
+  display: inline-block;
+  width: 80%;
+  height: 90%;
+  font-size: 1.5rem;
+}
 
 
 /* RESETS */
@@ -116,7 +151,7 @@ input[type="text"] {
 }
 .btn {
   padding: 0.8rem 1rem 0.7rem;
-  border: 0.12rem solid #4d4d4d;
+  border: 0.15rem solid #4d4d4d;
   cursor: pointer;
   text-transform: capitalize;
 }
@@ -187,7 +222,8 @@ input[type="text"] {
 }
 /* END GLOBAL STYLES */
 .todoapp {
-  background: #fff;
+  background: rgb(252, 252, 252);
+  min-height: 1200px;
   margin: 2rem 0 4rem 0;
   margin-left: 400px;
   margin-top: 0px;
@@ -223,9 +259,8 @@ input[type="text"] {
   text-align: center;
 }
 .input__lg {
-  padding: 1rem;
+  padding: 0.6rem;
   border: 2px solid #000;
-  width: 60%;
 }
 
 
@@ -234,11 +269,7 @@ input[type="text"] {
   border-color: #4d4d4d;
   box-shadow: inset 0 0 0 2px;
 }
-[class*="__lg"] {
-  display: inline-block;
-  width: 80%;
-  font-size: 1.9rem;
-}
+
 [class*="__lg"]:not(:last-child) {
   margin-bottom: 1rem;
 }
