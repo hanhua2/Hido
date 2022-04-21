@@ -16,15 +16,15 @@
   margin-bottom: 0px;
 }
 
-.datepicker {
-  margin-bottom: 10px;
-  margin-left: -480px
-}
-
 #dateheading {
   margin-left: -160px;
   margin-top: -80px;
-  margin-bottom: -25px;
+  margin-bottom: 0px;
+}
+
+.datepicker {
+  margin-bottom: 20px;
+  margin-left: -488px
 }
 
 

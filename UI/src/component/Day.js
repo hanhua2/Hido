@@ -118,7 +118,7 @@ function Day(props) {
 
 
   async function addTask(name) {
-    const newTask = { id: "todo-" + uuidv4(), name: name, status: "To do", color : "#d2635b", priority : "Normal", comment : "", date : new Date()  };
+    const newTask = { id: "todo-" + uuidv4(), name: name, status: "To do", color : "#d2635b", priority : "Normal", comment : "", date : startDate  };
     taskAdd(newTask);
     setTasks([...tasks, newTask]);
   }
@@ -182,13 +182,8 @@ function Day(props) {
       <button className={"function"} style={{margin:"10px 20px 0px 600px"}}>Sort</button>
       <button className={"function"}>Export</button>
       <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
-      <DatePicker 
-        selected={startDate} 
-        onChange={date => setStartDate(date)} 
-        className = "datepicker"
-      />
     
-      <Form addTask={addTask} startDate={startDate} />
+      <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>

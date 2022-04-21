@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Form(props) {
   const [name, setName] = useState('');
@@ -22,7 +23,11 @@ function Form(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-
+      <DatePicker 
+        selected={props.startDate} 
+        onChange={date => props.setStartDate(date)} 
+        className = "datepicker"
+      />
       <input
         type="text"
         id="new-todo-input"
