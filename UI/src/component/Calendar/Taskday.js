@@ -22,7 +22,6 @@ function Taskday({day, date}) {
                     {day.tasks.map(task=>(
                         <Task key={task.id} task={task} style={getStyle(task.color)}/>
                     ))}
-
                 </div>
                 <h3> {day.date.getDate()} </h3>
             </div>

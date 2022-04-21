@@ -5,9 +5,9 @@ import {Day, Home, LogIn, Month, Navigation, Register} from "./component";
 
 function App() {
     return (
-        <div className="App">
-            <Navigation/>
-                <Routes>
+        <div className="App" fixed = "top">
+            <Navigation  className="nav"/>
+                <Routes className="routes">
                     <Route path="/" element={<Home/>}/>
                     <Route path="/login" element={<LogIn/>}/>
                     <Route path="/register" element={<Register/>}/>

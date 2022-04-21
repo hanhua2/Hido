@@ -61,6 +61,7 @@ function TaskForm() {
             setPriority(task.priority || "Normal");
             setComment(task.comment || "");
         }
+        console.log(task);
     }, [task]);
 
     const closeModal = () => {

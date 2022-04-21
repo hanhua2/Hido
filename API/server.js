@@ -91,6 +91,7 @@ const resolvers = {
         registeruser,
         taskAdd,
         taskDelete,
+        taskUpdate,
     },
     GraphQLDate,
 };
@@ -182,6 +183,18 @@ async function taskDelete(_, {taskID}) {
         {id: taskID}
     );
     return deletedTask;
+}
+[{"date":"2022-04-14T16:00:00.000Z","name":"a","color":"#ff9800","status":"To do","priority":"Normal","comment":"","id":"80110c64-856d-4a5b-a907-e8533f94edd4"}]
+
+async function taskUpdate(_, {task}) {
+    const deletedTask = await db.collection('tasks').findOne({id: task.id});
+    const deleteResult = await db.collection('tasks').deleteOne(
+        {id: task.id}
+    );
+    const result = await db.collection('tasks').insertOne(task);
+    const savedTask = await db.collection('tasks')
+        .findOne({_id: result.insertedId});
+    return savedTask;    
 }
 
 /*

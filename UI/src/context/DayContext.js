@@ -83,26 +83,7 @@ async function taskUpdate(task) {
   const data = await graphQLFetch(query, {task});
 }
 
-/*
-const getDatabase = ()=> {  
-  let db = localStorage.getItem("$calendar_db");
-  
-  if(!db) {
-    db = [];
-    setDatabase(db);
-  } else {
-    db = JSON.parse(db);    
-    db.map(task=> task.date = new Date(task.date));
-  } 
-  return db;
-} */
-
-/*
-const setDatabase = (db)=> {
-  localStorage.setItem("$calendar_db", JSON.stringify(db));
-} */
-
-export const CalendarContext = createContext();
+export const DayContext = createContext();
 
 export const sameDay = (a, b) => {
   return a.getDate()     === b.getDate()
@@ -111,7 +92,7 @@ export const sameDay = (a, b) => {
 }
 
 
-function CalendarState(props) {
+function DayState(props) {
   
   
   const initialState = {
@@ -226,7 +207,7 @@ function CalendarState(props) {
   }
   
   return (
-    <CalendarContext.Provider
+    <DayContext.Provider
       value={{
 
         date: state.date,
@@ -240,8 +221,8 @@ function CalendarState(props) {
       }}
     >
       {props.children}
-    </CalendarContext.Provider>
+    </DayContext.Provider>
   );
 }
 
-export default CalendarState;
+export default DayState;

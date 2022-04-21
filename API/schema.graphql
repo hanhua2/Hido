@@ -48,4 +48,5 @@ type Mutation {
   login(email: String!, password: String!): User!
   taskAdd(task: TaskInput!): Task!
   taskDelete(taskID: String!): Task!
+  taskUpdate(task : TaskInput!): Task!
 }

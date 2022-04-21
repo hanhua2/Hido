@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 function Form(props) {
   const [name, setName] = useState('');
+
 
 
   function handleSubmit(e) {
@@ -20,11 +22,6 @@ function Form(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
-        </label>
-      </h2>
 
       <input
         type="text"
@@ -34,7 +31,10 @@ function Form(props) {
         autoComplete="off"
         value={name}
         onChange={handleChange}
+        placeholder = "What needs to be done?"
+
       />
+
       <button type="submit" className="btn btn__primary btn__lg">
         Add
       </button>
