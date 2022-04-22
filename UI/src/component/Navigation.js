@@ -26,16 +26,6 @@ function Navigation() {
                   LOGIN
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/day">
-                  DAY
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/month">
-                  MONTH
-                </NavLink>
-              </li>
             </ul>
           </div>
         </div>

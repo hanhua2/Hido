@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import "../Day.css"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Se from "react-datepicker";
+import Navbar from "./Navbar";
 
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
@@ -78,7 +80,7 @@ const FILTER_MAP = {
   All: () => true,
   Todo: task => task.status === "To do" || task.status === "Doing",
   Done: task => task.status === "Done"
-};  
+};
 
 const PRIORITY_MAP = {
   "Primary" : 1,
@@ -111,11 +113,11 @@ function Day(props) {
 
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);
 
 
   function toggleTaskCompleted(id) {
-    const updatedTasks = tasks.map(task => {   
+    const updatedTasks = tasks.map(task => {
       if (id === task.id) {
         return {...task, status: task.status === "Done" ? "To do": "Done" }
       }
@@ -124,7 +126,7 @@ function Day(props) {
     setTasks(updatedTasks);
     const newTask = tasks.filter(task => {return task.id === id})
     .map(task => {return {...task, status: task.status === "Done" ? "To do": "Done"}});
-    taskUpdate(newTask[0]);  
+    taskUpdate(newTask[0]);
   }
 
   function addTask(name, priority) {
@@ -159,14 +161,14 @@ function Day(props) {
     sortedTasks.map(task => {
       delete task.idx;  return task});
     setTasks(sortedTasks);
-  } 
+  }
 
   const sameDay = (a, b) => {
     return a.getDate()     === b.getDate()
         && a.getMonth()    === b.getMonth()
         && a.getFullYear() === b.getFullYear();
   }
-  
+
   const taskList = tasks
   .filter(FILTER_MAP[filter]).filter(task=>sameDay(startDate, task.date))
   .map(task => (
@@ -181,7 +183,7 @@ function Day(props) {
       editTask={editTask}
     />
   ));
- 
+
 
   const filterList = FILTER_NAMES.map(name => (
     <FilterButton
@@ -197,13 +199,16 @@ function Day(props) {
   const dateHeading = `${startDate.getMonth()+1}-${startDate.getUTCDate()}-${startDate.getFullYear()} To do List`
 
   return (
+      <>
+    <Navbar/>
     <div className="todoapp stack-large" id = "resize">
+      <Set/>
       <button className={"function"} style={{margin:"10px 20px 0px 600px"}} onClick={()=> sortTask()} >Sort</button>
       <button className={"function"}>Export</button>
       <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
-    
+
       <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
-      
+
       <div className="filters btn-group stack-exception">
         {filterList}
       </div>
@@ -219,7 +224,7 @@ function Day(props) {
         {taskList}
       </ul>
     </div>
-
+      </>
   );
 }
 

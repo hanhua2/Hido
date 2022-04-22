@@ -1,15 +1,10 @@
 import React from "react";
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import '../Set.scss';
 
 const sidebarNavItems = [
-    {
-        display: 'Setting',
-        icon: <i className='bx bx-setting'></i>,
-        to: '/',
-        section: ''
-    },
     {
         display: ' Music ',
         icon: <i className='bx bx-music'></i>,
@@ -53,6 +48,12 @@ const Set = () => {
         setActiveIndex(curPath.length === 0 ? 0 : activeItem);
     }, [location]);
 
+    let navigate = useNavigate();
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        navigate('/', { replace: true })
+    };
     return(
     <div className='sidebar'>
         <div className="sidebar__logo">
@@ -83,7 +84,7 @@ const Set = () => {
 
             }
         </div>
-        <button className={"sidebar__logout"}>
+        <button className={"sidebar__logout"} onClick={handleClick}>
             Log out
         </button>
     </div>)

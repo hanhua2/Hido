@@ -1,11 +1,11 @@
 import React from "react";
 import '../Home.scss';
+import Navigation from "./Navigation";
 
 function Home() {
   return (
     <div className="home">
-
-
+        <Navigation  className="nav"/>
       <div className={"Home"}>
         <img className={"Home__image2"} src="images/twitter_profile_image.png" alt="" />
         <img className={"Home__image1"} src="images/5d62543402daf1566725172569.png" alt=""/>
