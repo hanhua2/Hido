@@ -224,9 +224,7 @@ function Day(props) {
           <button id = "sort" className="btn" onClick={()=> sortTask()} >Sort</button>
           <button id = "export" className="btn" onClick={() => exportComponentAsPNG(componentRef)}>Export</button>
           <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
-        
           <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
-          
           <div className="filters btn-group stack-exception">
             {filterList}
           </div>
