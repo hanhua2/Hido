@@ -56,29 +56,29 @@ function Player(props) {
                     SkipSong={SkipSong}
                 />
 
-                <div class="player__footer">
-                    <ul class="list list--footer">
+                <div className="player__footer">
+                    <ul className="list list--footer">
                         <li>
-                            <a href="#" class="list__link">
-                                <i class="fa fa-heart-o"></i>
+                            <a href="#" className="list__link">
+                                <i className="fa fa-heart-o"></i>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="list__link">
-                                <i class="fa fa-random"></i>
+                            <a href="#" className="list__link">
+                                <i className="fa fa-random"></i>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="list__link">
-                                <i class="fa fa-undo"></i>
+                            <a href="#" className="list__link">
+                                <i className="fa fa-undo"></i>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="list__link">
-                                <i class="fa fa-ellipsis-h"></i>
+                            <a href="#" className="list__link">
+                                <i className="fa fa-ellipsis-h"></i>
                             </a>
                         </li>
                     </ul>
