@@ -6,12 +6,6 @@ import '../Set.scss';
 
 const sidebarNavItems = [
     {
-        display: ' Music ',
-        icon: <i className='bx bx-music'></i>,
-        to: '/',
-        section: ''
-    },
-    {
         display: '  Day  ',
         icon: <i className='bx bx-day'></i>,
         to: '/day',
@@ -56,7 +50,6 @@ const Set = () => {
     };
     return(
     <div className='sidebar'>
-        <div className="block"></div>
         <div className="sidebar__logo">
             User Account
         </div>
@@ -88,8 +81,7 @@ const Set = () => {
         <button className={"sidebar__logout"} onClick={handleClick}>
             Log out
         </button>
-    </div>
-    )
+    </div>)
 };
 
 export default Set;

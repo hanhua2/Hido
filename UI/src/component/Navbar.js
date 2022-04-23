@@ -1,11 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import '../Navbar.scss'
 
 function Navbar() {
     return (
-        <div className="navbar">
-            <div className="navbar navbar-expand navbar-dark bg-dark">
+        <div className="bar">
+            <nav className="navbar navbar-expand navbar-dark bg-dark">
                 <div className="container">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
@@ -21,7 +20,7 @@ function Navbar() {
                             </li>
                         </ul>
                     </div>
-                </div>
+                </nav>
             </div>
     );
 }

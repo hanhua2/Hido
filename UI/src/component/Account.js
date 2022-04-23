@@ -2,24 +2,32 @@ import React from "react";
 import Set from "./Set";
 import Navbar from "./Navbar";
 import "../Day.css"
+import {MusicPlayer} from "./index";
 
-function Account(){
+function Account() {
     return (
         <>
-        <Navbar/>
-        <div className="todoapp stack-large" id = "resize">
+            <Navbar/>
+            <MusicPlayer/>
+            <div className="todoapp stack-large" id="resize">
 
-            <Set/>
+                <Set/>
 
-            <h2 style={{"text-align":"left"}}>Getting Started</h2>
-            <h4 style={{"text-align":"left"}}>🐱‍🐉Welcome to Hido</h4>
-            <h4 style={{"text-align":"left"}}>🙌Here are some tips for you to enjoy Hido</h4>
-            <h5 style={{"text-align":"left"}}>👂Click on Music to enjoy some music</h5>
-            <h5 style={{"text-align":"left"}}>🙋‍♀️You can Click on Day to write down your tasks for today!</h5>
-            <h5 style={{"text-align":"left"}}>📅You can also Click on Month to make a plan for the following days</h5>
-            <h4 style={{"text-align":"left"}}>🎉Enjoy your trip!</h4>
+                <h2 style={{"text-align": "left"}}>Getting Started</h2>
+                <h4 style={{"text-align": "left"}}>🐱‍🐉Welcome to Hido</h4>
+                <h4 style={{"text-align": "left"}}>🙌Here are some tips for you to enjoy Hido</h4>
+                <h5 style={{"text-align": "left"}}>👂Click the play on the right to enjoy some music</h5>
+                <h5 style={{"text-align": "left"}}>🙋‍♀️You can Click on Day to write down your tasks for today!</h5>
+                <h5 style={{"text-align": "left"}}>📅You can also Click on Month to make a plan for the following
+                    days</h5>
+                <h4 style={{"text-align": "left"}}>🎉Enjoy your trip!</h4>
 
-        </div>
+            </div>
+            <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">
+                <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                    <p className="u-small-text u-text u-text-variant u-text-1">@2022 Hido Copyright.</p>
+                </div>
+            </footer>
         </>
     )
 }

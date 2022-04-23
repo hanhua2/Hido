@@ -62,6 +62,7 @@ function LogIn() {
 
     const success = (response) => {
         navigate("/account", {replace: true});
+        console.log(response)
     }
 
     const failure = (response) => {
@@ -85,11 +86,19 @@ function LogIn() {
       </div>
 
         <Form onSubmit={onSubmit} className="login-form">
-            <Form.Input label='Email' placeholder="Email" name={"email"} type="email" value={values.email}
+            <br />
+            <br />
+            <div className="Login__text1">
+                Please type in your email
+            </div>
+            <Form.Input placeholder="Email" name={"email"} type="email" value={values.email}
                         onChange={onChange} className="form-email"/>
-            <Form.Input label='Password' placeholder="Password" name={"password"} type="password" value={values.password}
+            <div className="Login__text2">
+                Please type in your password
+            </div>
+            <Form.Input placeholder="Password" name={"password"} type="password" value={values.password}
                         onChange={onChange} className="form-password"/>
-            <Button type={"submit"} className ="submit" primary>  Take me to Hido</Button>
+            <Button type={"submit"} className ="submit" primary>Take me to Hido</Button>
         </Form>
 
       <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">

@@ -87,17 +87,34 @@ function Register() {
             </div>
 
             <Form onSubmit={onSubmit} noValidate className={"register-form"}>
-                <Form.Input label='Lastname' placeholder="Last Name" name={"lastname"} type="text" value={values.lastname}
-                            onChange={onChange} className="form-lastname"/>
-                <Form.Input label='Firstname' placeholder="First Name" name={"firstname"} type="text" value={values.firstname}
-                            onChange={onChange} className="form-firstname"/>
-                <Form.Input label='Email' placeholder="Please Set Your Email" name={"email"} type="email" value={values.email}
-                            onChange={onChange} className="form-email"/>
-                <Form.Input label='Password' placeholder="Please Set Your Password" name={"password"} type="password" value={values.password}
-                            onChange={onChange} className="form-password"/>
-                <Form.Input label='Confirmpassword' placeholder="Please Retype Your Password" name={"confirmPassword"} type="password" value={values.confirmPassword}
-                            onChange={onChange} className="form-password2"/>
-                <Button type={"submit"} primary>Register</Button>
+                <br />
+                <br />
+                <div className="Register__text1">
+                    Please type in your last name
+                </div>
+                <Form.Input  placeholder="Last Name" name={"lastname"} type="text" value={values.lastname}
+                            onChange={onChange} className="form-input"/>
+                <div className="Register__text2">
+                    Please type in your first name
+                </div>
+                <Form.Input placeholder="First Name" name={"firstname"} type="text" value={values.firstname}
+                            onChange={onChange} className="form-input"/>
+                <div className="Register__text3">
+                    Please type in your email
+                </div>
+                <Form.Input placeholder="Email" name={"email"} type="email" value={values.email}
+                            onChange={onChange} className="form-input"/>
+                <div className="Register__text4">
+                    Please type in your password
+                </div>
+                <Form.Input placeholder="Password" name={"password"} type="password" value={values.password}
+                            onChange={onChange} className="form-input"/>
+                <div className="Register__text5">
+                    Please type in your password again
+                </div>
+                <Form.Input placeholder="Retype In Password" name={"confirmPassword"} type="password" value={values.confirmPassword}
+                            onChange={onChange} className="form-input"/>
+                <Button type={"submit"} primary className="submit">Register</Button>
             </Form>
 
             {Object.keys(errors).length > 0 && (
