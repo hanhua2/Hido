@@ -1,16 +1,11 @@
 .sidebar {
   position: fixed;
-  top:98px;
+  top: 98px;
   left: 0;
-  height: 100vh;
+  height: 820px;
   width: 250px;
+  margin-right: 0;
   background-color: #f2f2f2;
-  z-index: 10;
-  
-.block {
-  height: 0px;
-  background-color: #191b1f;
-}
 
   &__logo {
     display: grid;
@@ -51,6 +46,7 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: #555555;
+      margin-top: 50px;
       transition: color 0.3s ease-in-out;
 
       &.active {
@@ -84,16 +80,6 @@
       }
     }
 
-    &__indicator {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: calc(100% - 40px);
-      border-radius: 10px;
-      z-index: -1;
-      transform: translateX(-50%);
-      transition: 0.3s ease-in-out;
-    }
 
   }
 }

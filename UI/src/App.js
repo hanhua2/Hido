@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import {Routes} from "react-router-dom"
 import {Route} from "react-router";
-import {Day, Home, LogIn, Month, Navigation, Register, Account} from "./component";
+import {Day, Home, LogIn, Month, Navigation, Register, Account, Music} from "./component";
+
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                     <Route path="/login" element={<LogIn/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/account" element={<Account/>}/>
+                    <Route path="/music" element={<Music/>}/>
                     <Route path="/day" element={<Day/>}/>
                     <Route path="/month" element={<Month/>}/>
                 </Routes>
