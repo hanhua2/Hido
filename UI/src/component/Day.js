@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 import Set from "react-datepicker";
 
+
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
 
 function jsonDateReviver(key, value) {
@@ -232,7 +233,6 @@ function Day(props) {
         </div>
       </div>
     </div>
-
   );
 }
 
