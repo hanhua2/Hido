@@ -6,16 +6,15 @@ import Header from "./Calendar/Header";
 import Calendar from "./Calendar/Calendar";
 import TaskForm from "./Calendar/TaskForm";
 import Navbar from "./Navbar";
+import Navigation from "./Navigation";
 
 const Month = () => {
     return(
-        <>
+        <>      
         <Navbar/>
         <div style={{
         padding: '70px 30px 0px 280px'}}>
-
         <Set />
-
         <div className={"container"}>
             <CalendarState>
                 <Header />
@@ -26,8 +25,7 @@ const Month = () => {
                 Export to Google Calendar
             </button>
         </div>
-
-    </div>
+        </div>
         </>)
 };
 

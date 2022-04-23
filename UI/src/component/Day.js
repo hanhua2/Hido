@@ -3,11 +3,12 @@ import Form from "./todo/Form";
 import FilterButton from "./todo/FilterButton";
 import Todo from "./todo/Todo";
 import Set from "./Set";
+import Navigation from "./Navigation";
 import { v4 as uuidv4 } from 'uuid';
 import "../Day.css"
 import "react-datepicker/dist/react-datepicker.css";
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
-import Set from "react-datepicker";
+import Navbar from "./Navbar";
 
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
@@ -217,19 +218,22 @@ function Day(props) {
 
 
   return (
-    <div className="Day">
-      <Set/>
-      <div className="day-container">
-        <div className="day-block"></div>
-        <div className="todoapp stack-large" id = "resize">
-          <button id = "sort" className="btn" onClick={()=> sortTask()} >Sort</button>
-          <button id = "export" className="btn" onClick={() => exportComponentAsPNG(componentRef)}>Export</button>
-          <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
-          <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
-          <div className="filters btn-group stack-exception">
-            {filterList}
+    <div>
+      <Navbar/>
+      <div className="Day">
+        <Set/>
+        <div className="day-container">
+          <div className="day-block"></div>
+          <div className="todoapp stack-large" id = "resize">
+            <button id = "sort" className="btn" onClick={()=> sortTask()} >Sort</button>
+            <button id = "export" className="btn" onClick={() => exportComponentAsPNG(componentRef)}>Export</button>
+            <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
+            <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
+            <div className="filters btn-group stack-exception">
+              {filterList}
+            </div>
+            <ComponentToPrint ref={componentRef} />
           </div>
-          <ComponentToPrint ref={componentRef} />
         </div>
       </div>
     </div>
