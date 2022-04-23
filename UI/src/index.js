@@ -3,7 +3,8 @@ import {render} from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter} from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { BrowserRouter as Router} from "react-router-dom";
 
 import {
     ApolloClient,
@@ -18,9 +19,9 @@ const client = new ApolloClient({
 
 render(
     <ApolloProvider client={client}>
-        <BrowserRouter>
+        <Router history = {createBrowserHistory()}>
             <App />
-        </BrowserRouter>
+        </Router>
     </ApolloProvider>,
     document.getElementById('root')
 );
@@ -29,3 +30,4 @@ render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

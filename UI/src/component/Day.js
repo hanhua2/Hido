@@ -5,9 +5,9 @@ import Todo from "./todo/Todo";
 import Set from "./Set";
 import { v4 as uuidv4 } from 'uuid';
 import "../Day.css"
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+import Set from "react-datepicker";
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
 
@@ -78,13 +78,13 @@ const FILTER_MAP = {
   All: () => true,
   Todo: task => task.status === "To do" || task.status === "Doing",
   Done: task => task.status === "Done"
-};  
+};
 
 const PRIORITY_MAP = {
   "Primary" : 1,
   "Urgent" : 2,
   "Normal" : 3,
-  "No Rush" : 4
+  "No Rush" : 4,
 }
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
@@ -94,7 +94,7 @@ function Day(props) {
   const [tasks, setTasks] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [sorted, setSorted] = useState(false);
-
+  const componentRef = useRef();
 
   const fetchData = async() => {
     const query = `query {
@@ -111,11 +111,11 @@ function Day(props) {
 
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);
 
 
   function toggleTaskCompleted(id) {
-    const updatedTasks = tasks.map(task => {   
+    const updatedTasks = tasks.map(task => {
       if (id === task.id) {
         return {...task, status: task.status === "Done" ? "To do": "Done" }
       }
@@ -124,7 +124,7 @@ function Day(props) {
     setTasks(updatedTasks);
     const newTask = tasks.filter(task => {return task.id === id})
     .map(task => {return {...task, status: task.status === "Done" ? "To do": "Done"}});
-    taskUpdate(newTask[0]);  
+    taskUpdate(newTask[0]);
   }
 
   function addTask(name, priority) {
@@ -155,18 +155,18 @@ function Day(props) {
 
   function sortTask() {
     const sortedTasks = tasks.map(task => {task.idx = PRIORITY_MAP[task.priority]; return task})
-    sortedTasks.sort((a, b) => (a.idx > b.idx) ? 1 : -1);
+    sortedTasks.sort((a, b) => (a.idx >= b.idx) ? 1 : -1);
     sortedTasks.map(task => {
       delete task.idx;  return task});
     setTasks(sortedTasks);
-  } 
+  }
 
   const sameDay = (a, b) => {
     return a.getDate()     === b.getDate()
         && a.getMonth()    === b.getMonth()
         && a.getFullYear() === b.getFullYear();
   }
-  
+
   const taskList = tasks
   .filter(FILTER_MAP[filter]).filter(task=>sameDay(startDate, task.date))
   .map(task => (
@@ -181,7 +181,7 @@ function Day(props) {
       editTask={editTask}
     />
   ));
- 
+
 
   const filterList = FILTER_NAMES.map(name => (
     <FilterButton
@@ -192,32 +192,47 @@ function Day(props) {
     />
   ));
 
+  const ComponentToPrint = React.forwardRef((props, ref) => (
+      <div ref={ref}>
+        <h2 id="list-heading" tabIndex="-1" >
+          {formHeading}
+        </h2>
+        <ul
+          role="list"
+          className="todo-list stack-large stack-exception"
+          aria-labelledby="list-heading"
+          id="task-display"
+        >
+          {taskList}
+        </ul>
+
+      </div>
+  ));
+
   const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
-  const formHeading = `${taskList.length} ${tasksNoun} left`;
-  const dateHeading = `${startDate.getMonth()+1}-${startDate.getUTCDate()}-${startDate.getFullYear()} To do List`
+  const formHeading = `${startDate.getMonth()+1}/${startDate.getDate()}: ${taskList.length} ${tasksNoun}`;
+  const dateHeading = `${startDate.getMonth()+1}-${startDate.getDate()}-${startDate.getFullYear()} To do List`
+
+
 
   return (
-    <div className="todoapp stack-large" id = "resize">
-      <button className={"function"} style={{margin:"10px 20px 0px 600px"}} onClick={()=> sortTask()} >Sort</button>
-      <button className={"function"}>Export</button>
-      <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
-    
-      <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
-      
-      <div className="filters btn-group stack-exception">
-        {filterList}
+    <div className="Day">
+      <Set/>
+      <div className="day-container">
+        <div className="day-block"></div>
+        <div className="todoapp stack-large" id = "resize">
+          <button id = "sort" className="btn" onClick={()=> sortTask()} >Sort</button>
+          <button id = "export" className="btn" onClick={() => exportComponentAsPNG(componentRef)}>Export</button>
+          <h3 className="dateheading" id="dateheading" >{dateHeading}</h3>
+        
+          <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate} />
+          
+          <div className="filters btn-group stack-exception">
+            {filterList}
+          </div>
+          <ComponentToPrint ref={componentRef} />
+        </div>
       </div>
-      <h2 id="list-heading" tabIndex="-1" >
-        {formHeading}
-      </h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading"
-        id="task-display"
-      >
-        {taskList}
-      </ul>
     </div>
 
   );

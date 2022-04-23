@@ -5,6 +5,7 @@ const {ApolloServer, UserInputError} = require('apollo-server-express');
 const {GraphQLScalarType} = require('graphql');
 const {Kind} = require('graphql/language');
 const {MongoClient} = require('mongodb');
+const { v4: uuidv4 } = require('uuid');
 
 const url = 'mongodb://localhost/Hido';
 
@@ -89,6 +90,7 @@ const resolvers = {
     Mutation: {
         setAboutMessage,
         registeruser,
+        login,
         taskAdd,
         taskDelete,
         taskUpdate,
@@ -118,7 +120,7 @@ async function registeruser(_, {
         throw new UserInputError('Errors', {errors});
     }
 
-    /*
+
     const user = await db.collection('users').findOne({'email': email})
 
     if (user) {
@@ -128,17 +130,18 @@ async function registeruser(_, {
             }
         });
     }
-    */
+
 
     password = await bcrypt.hash(password, 12);
 
     const result = await db.collection('users').insertOne({
-        "lastname":lastname, "firstname":firstname, "email":email, "password":password, "created": new Date()
+        "id":uuidv4(), "lastname":lastname, "firstname":firstname, "email":email, "password":password, "created": new Date()
     })
 
     const savedUser = await db.collection('users')
         .findOne({_id: result.insertedId});
 
+    console.log("Register Successful!")
     return savedUser;
 }
 
@@ -148,7 +151,6 @@ async function login(_, {email, password}){
     if (!valid) {
         throw new UserInputError('Errors', { errors });
     }
-
 
     const user = await db.collection('users').findOne({'email': email});
 
@@ -163,11 +165,11 @@ async function login(_, {email, password}){
         errors.general = 'Wrong password';
         throw new UserInputError('Wrong password', { errors });
     }
+    else{
+        console.log("Login Successful!")
+    }
 
-    return {
-        ...user._doc,
-        id : user._id,
-    };
+    return user;
 }
 
 async function taskAdd(_, {task}) {
@@ -194,7 +196,7 @@ async function taskUpdate(_, {task}) {
     const result = await db.collection('tasks').insertOne(task);
     const savedTask = await db.collection('tasks')
         .findOne({_id: result.insertedId});
-    return savedTask;    
+    return savedTask;
 }
 
 /*

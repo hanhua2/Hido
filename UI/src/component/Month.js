@@ -5,11 +5,15 @@ import CalendarState from "../context/CalendarContext";
 import Header from "./Calendar/Header";
 import Calendar from "./Calendar/Calendar";
 import TaskForm from "./Calendar/TaskForm";
+import Navbar from "./Navbar";
 
 const Month = () => {
-    return <div style={{
-        padding: '70px 30px 0px 280px'
-    }}>
+    return(
+        <>
+        <Navbar/>
+        <div style={{
+        padding: '70px 30px 0px 280px'}}>
+
         <Set />
 
         <div className={"container"}>
@@ -23,7 +27,8 @@ const Month = () => {
             </button>
         </div>
 
-    </div>;
+    </div>
+        </>)
 };
 
 export default Month;

@@ -43,7 +43,7 @@ export default function Todo(props) {
           <label className="todo-label" htmlFor={props.id}>
             {props.name}
           </label>
-
+          
         </div>
         
         <div className="btn-group">

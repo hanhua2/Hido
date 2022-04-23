@@ -4,3 +4,5 @@ export { default as Register } from "./Register";
 export { default as Navigation } from "./Navigation";
 export { default as Day } from "./Day";
 export { default as Month } from "./Month";
+export { default as Account } from "./Account";
+export { default as Navbar } from "./Navbar";

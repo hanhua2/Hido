@@ -44,7 +44,7 @@ type Query {
 
 type Mutation {
   setAboutMessage(message: String!): String
-  registeruser(registerInput: RegisterInput): User!
+  registeruser(registerInput: RegisterInput!): User!
   login(email: String!, password: String!): User!
   taskAdd(task: TaskInput!): Task!
   taskDelete(taskID: String!): Task!

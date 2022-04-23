@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import '../register.scss';
 import {gql, useMutation} from "@apollo/client";
 import { Button, Form } from 'semantic-ui-react';
+import { useNavigate } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const REGISTER_USER = gql`
     mutation registeruser(
@@ -20,6 +22,7 @@ const REGISTER_USER = gql`
                 confirmPassword: $confirmPassword
             }
         ) {
+            id
             lastname
             firstname
             email
@@ -59,7 +62,12 @@ function Register() {
         confirmPassword: '',
     });
 
+    let navigate = useNavigate();
+
     const [addUser, {data, loading, error}] = useMutation(REGISTER_USER, {
+        update(_, result) {
+            navigate('/login', { replace: true })
+        },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
@@ -72,6 +80,7 @@ function Register() {
 
     return (
         <div className="Register">
+            <Navigation  className="nav"/>
             <img  className="login-image" src="images/twitter_profile_image.png" alt=""/>
             <div>
                 <h3 className={"account"}>CREATE NEW ACCOUNT</h3>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function Navigation() {
   return (
-    <div className="navigation">
+    <div className="navigation" id="nav">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="container">
           <NavLink className="navbar-brand" to="/">
@@ -24,16 +24,6 @@ function Navigation() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
                   LOGIN
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/day">
-                  DAY
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/month">
-                  MONTH
                 </NavLink>
               </li>
             </ul>
