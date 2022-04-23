@@ -2,19 +2,21 @@
 ### git clone https://github.com/hanhua2/hido.git
 
 In one shell(UI on port 3000):
-1. cd /hido/UI
-2. npm install
-3. npm start
+1. cd hido
+2. cd UI
+3. npm install
+4. npm start
 
 In another shell(API on port 5000):
 
 1. mkdir -p /data/db
 2. screen mongod
 3. Ctrl A+D
-4. cd /hido/API
-5. mongo Hido scripts/init.mongo.js
-6. npm install
-7. npm start
+4. cd hido
+5. cd API
+6. mongo Hido scripts/init.mongo.js
+7. npm install
+8. npm start
 
 Home: http://localhost:3000/
 Register: http://localhost:3000/register
