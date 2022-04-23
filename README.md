@@ -8,13 +8,13 @@ In one shell(UI on port 3000):
 
 In another shell(API on port 5000):
 
-Initially need to create a database called Hido in mongodb.
 1. mkdir -p /data/db
 2. screen mongod
 3. Ctrl A+D
 4. cd /hido/API
-5. npm install
-6. npm start
+5. mongo Hido scripts/init.mongo.js
+6. npm install
+7. npm start
 
 Home: http://localhost:3000/
 Register: http://localhost:3000/register
