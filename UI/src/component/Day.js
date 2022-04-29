@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import Form from "./todo/Form";
 import FilterButton from "./todo/FilterButton";
 import Todo from "./todo/Todo";
@@ -8,6 +8,7 @@ import "../Day.css"
 import "react-datepicker/dist/react-datepicker.css";
 import Navbar from "./Navbar";
 import {MusicPlayer} from "./index";
+import html2canvas from 'html2canvas';
 
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
@@ -218,6 +219,28 @@ function Day(props) {
     const formHeading = `${taskList.length} ${tasksNoun} left`;
     const dateHeading = `${startDate.getMonth() + 1}-${startDate.getUTCDate()}-${startDate.getFullYear()} To do List`
 
+
+    const printRef = useRef();
+
+    const handleDownloadImage = async () => {
+            const element = printRef.current;
+            const canvas = await html2canvas(element);
+
+            const data = canvas.toDataURL('image/jpg');
+            const link = document.createElement('a');
+
+            if (typeof link.download === 'string') {
+                link.href = data;
+                link.download = 'image.jpg';
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                window.open(data);
+            }
+        }
+
     return (
         <>
             <Navbar/><MusicPlayer/>
@@ -225,22 +248,24 @@ function Day(props) {
                 <Set/>
                 <button className={"function"} style={{margin: "10px 20px 0px 600px"}} onClick={() => sortTask()}>Sort
                 </button>
-                <button className={"function"}>Export</button>
+                <button className={"function"} onClick={handleDownloadImage}>Export</button>
+
                 <h3 className="dateheading" id="dateheading">{dateHeading}</h3>
 
                 <Form addTask={addTask} startDate={startDate} setStartDate={setStartDate}/>
 
-                <div className="filters btn-group stack-exception">
+                <div className="filters btn-group stack-exception" ref={printRef}>
                     {filterList}
                 </div>
-                <h2 id="list-heading" tabIndex="-1">
+                <h3 id="list-heading" tabIndex="-1">
                     {formHeading}
-                </h2>
+                </h3>
                 <ul
                     role="list"
                     className="todo-list stack-large stack-exception"
                     aria-labelledby="list-heading"
                     id="task-display"
+                    ref={printRef}
                 >
                     {taskList}
                 </ul>
@@ -252,7 +277,7 @@ function Day(props) {
             </footer>
         </>
     );
-}
+};
 
 
 export default Day;
