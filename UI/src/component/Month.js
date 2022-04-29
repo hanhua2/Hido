@@ -36,9 +36,7 @@ const Month = () => {
             console.error(error);
         }
 
-        return <div>
-            Hi
-        </div>;
+        return <div>hi</div>;
     };
 
     const handleClick = () => {
