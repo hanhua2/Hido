@@ -9,6 +9,7 @@ function Account() {
         <>
             <Navbar/>
             <MusicPlayer/>
+            <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
 
                 <Set/>

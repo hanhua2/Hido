@@ -244,6 +244,7 @@ function Day(props) {
     return (
         <>
             <Navbar/><MusicPlayer/>
+            <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
                 <Set/>
                 <button className={"function"} style={{margin: "10px 20px 0px 600px"}} onClick={() => sortTask()}>Sort
