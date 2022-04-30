@@ -51,12 +51,7 @@ function LogIn() {
             navigate("/account", {state:{email:values.email, google: false}});
         },
         onError(err) {
-<<<<<<< HEAD
             setErrors(err.graphQLErrors[0].extensions.errors);
-=======
-            setErrors(err.graphQLErrors[0].extensions.exception.errors);
-            alert("Email or password incorrect");
->>>>>>> c8955dc995ed57bd5d1f389f250d94122f7e0272
         },
         variables: values
     });
