@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Set from "./Set";
 import "../Month.css"
 import CalendarState from "../context/CalendarContext";
@@ -9,14 +9,47 @@ import Navbar from "./Navbar";
 import {MusicPlayer} from "./index";
 import {gql, useQuery} from "@apollo/client";
 
-const TASK_LIST = gql`
-    query TaskList{
-        taskList{
-            date, name, status, priority, comment,
-        }
-    }
-`;
+const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
 
+function jsonDateReviver(key, value) {
+    if (dateRegex.test(value)) return new Date(value);
+    return value;
+}
+
+async function graphQLFetch(query, variables = {}) {
+    try {
+        const response = await fetch('http://localhost:5000/graphql', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({ query, variables })
+        });
+        const body = await response.text();
+        const result = JSON.parse(body, jsonDateReviver);
+
+        if (result.errors) {
+            const error = result.errors[0];
+            if (error.extensions.code === 'BAD_USER_INPUT') {
+                const details = error.extensions.exception.errors.join('\n ');
+                alert(`${error.message}:\n ${details}`);
+            } else {
+                alert(`${error.extensions.code}: ${error.message}`);
+            }
+        }
+        return result.data;
+    } catch (e) {
+        alert(`Error in sending data to server: ${e.message}`);
+    }
+}
+
+const getDatabase = async ()=> {
+    const query = `query {
+    taskList {
+      date, name, status, priority, comment,
+    }
+  }`
+    const data = await graphQLFetch(query);
+    return data.taskList;
+}
 
 const Month = () => {
     let gapi = window.gapi;
@@ -26,20 +59,40 @@ const Month = () => {
     let DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
     let SCOPES = "https://www.googleapis.com/auth/calendar.events"
 
-    const TaskListQuery = () => {
-        const { loading, error, data } = useQuery(TASK_LIST);
 
-        if (loading) {
-            console.log("loading");
+    const handleClick = async () => {
+        var taskArray = Array();
+
+        const db = await getDatabase();
+
+        for (let i = 0; i < db.length; i++) {
+            var obj = db[i]
+
+            const event = {
+                'summary': obj.name,
+                'description': 'Status: ' + obj.status.toString() + 'Priority: ' + obj.priority.toString() + 'Comment: '+obj.comment.toString(),
+                'start': {
+                    'dateTime': obj.date,
+                    'timeZone': 'Asia/Singapore'
+                },
+                'end': {
+                    'dateTime': obj.date,
+                    'timeZone': 'Asia/Singapore'
+                },
+                'recurrence': [
+                    'RRULE:FREQ=DAILY;COUNT=2'
+                ],
+                'reminders': {
+                    'useDefault': false,
+                    'overrides': [
+                        {'method': 'email', 'minutes': 24 * 60},
+                        {'method': 'popup', 'minutes': 10}
+                    ]
+                }
+            }
+            taskArray.push(event);
         }
-        if (error) {
-            console.error(error);
-        }
 
-        return <div>hi</div>;
-    };
-
-    const handleClick = () => {
         gapi.load('client:auth2', () => {
             console.log('loaded client')
 
@@ -54,40 +107,28 @@ const Month = () => {
 
             gapi.auth2.getAuthInstance().signIn()
                 .then(() => {
-                    const event = {
-                        'summary': 'Awesome Event!',
-                        'location': '800 Howard St., San Francisco, CA 94103',
-                        'description': 'Really great refreshments',
-                        'start': {
-                            'dateTime': '2020-06-28T09:00:00-07:00',
-                            'timeZone': 'America/Los_Angeles'
-                        },
-                        'end': {
-                            'dateTime': '2020-06-28T17:00:00-07:00',
-                            'timeZone': 'America/Los_Angeles'
-                        },
-                        'recurrence': [
-                            'RRULE:FREQ=DAILY;COUNT=2'
-                        ],
-                        'reminders': {
-                            'useDefault': false,
-                            'overrides': [
-                                {'method': 'email', 'minutes': 24 * 60},
-                                {'method': 'popup', 'minutes': 10}
-                            ]
-                        }
+                    for (var i = 0; i < taskArray.length - 1; i++) {
+                        var resource = taskArray[i];
+
+                        var request = gapi.client.calendar.events.insert({
+                            'calendarId': 'primary',
+                            'resource': resource,
+                        });
+                        request.execute(function(resp) {
+                            console.log(resp);
+                        });
                     }
 
-                    var request = gapi.client.calendar.events.insert({
+                    resource = taskArray[taskArray.length-1];
+
+                    request = gapi.client.calendar.events.insert({
                         'calendarId': 'primary',
-                        'resource': event,
-                    })
-
-                    request.execute(event => {
-                        console.log(event)
-                        window.open(event.htmlLink)
-                    })
-
+                        'resource': resource,
+                    });
+                    request.execute(function(resp) {
+                        console.log(resp);
+                        window.open(resp.htmlLink)
+                    });
                 })
         })
     }
