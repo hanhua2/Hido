@@ -16,7 +16,7 @@ const customStyles = {
     },
 };
 
-function TaskForm() {
+function TaskForm(props) {
 
     const { date, task, setTask, saveTask, setDate, deleteTask } =  useContext(CalendarContext);
 
@@ -26,6 +26,7 @@ function TaskForm() {
     const [status, setStatus] = useState("To do");
     const [priority, setPriority] = useState("Normal");
     const [comment, setComment] = useState("");
+    const [userEmail, setUserEmail] = useState(props.email);
 
     const statusOptions = [
         { value: 'To do', label: 'To do'},
@@ -60,6 +61,7 @@ function TaskForm() {
             setStatus(task.status || "To do");
             setPriority(task.priority || "Normal");
             setComment(task.comment || "");
+            setUserEmail(props.email || "");
         }
         console.log(task);
     }, [task]);
@@ -84,7 +86,8 @@ function TaskForm() {
             color: color,
             status: status,
             priority: priority,
-            comment: comment
+            comment: comment,
+            userEmail: userEmail
         });
         await setDate(date);
         closeModal();

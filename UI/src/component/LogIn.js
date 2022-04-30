@@ -48,7 +48,7 @@ function LogIn() {
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
         update(_, result) {
-            navigate("/account", {replace: true});
+            navigate("/account", {state:{email:values.email, google: false}});
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.errors);
@@ -61,11 +61,12 @@ function LogIn() {
     }
 
     const success = (response) => {
-        navigate("/account", {replace: true});
+        navigate("/account", {state:{email:response.Qu.Gv, google: true}} );  
         console.log(response)
     }
 
     const failure = (response) => {
+        alert("Google login failed");
         console.log(response);
     }
 

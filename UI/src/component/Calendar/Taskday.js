@@ -4,10 +4,10 @@ import { contrast } from '../../utils/utils';
 import Task from './Task';
 import "../../Taskday.css"
 
-function Taskday({day, date}) {
+function Taskday({day, date, email}) {
 
     const {setTask, setDate} = useContext(CalendarContext);
-
+    
     const getStyle = (color)=> {
         return { background: color, color: contrast(color)};
     }
@@ -15,11 +15,13 @@ function Taskday({day, date}) {
     const style = (day.date.getMonth() !== date.getMonth() ? ' disabled':'')
         + (sameDay(day.date, new Date()) ? ' current-day':'')
         + (selected ? ' selected-day':'')
+
+    const tasks = day.tasks.filter(task => task.userEmail === email);
     return (
         <div className={`day ${style}`} onClick={()=>setDate(day.date)}>
             <div className="task-day">
                 <div className="tasks">
-                    {day.tasks.map(task=>(
+                    {tasks.map(task=>(
                         <Task key={task.id} task={task} style={getStyle(task.color)}/>
                     ))}
                 </div>

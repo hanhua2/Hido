@@ -3,10 +3,10 @@ import { CalendarContext } from "../../context/CalendarContext";
 import Taskday from "./Taskday";
 import "../../Calendar.css"
 
-function Calendar() {
+function Calendar(props) {
 
     const { date, days, setDate } = useContext(CalendarContext);
-
+    let userEmail = props.email;
     useEffect(() => {
         setDate(new Date());
 
@@ -22,7 +22,7 @@ function Calendar() {
                 {names.map(name=><h5 key={name}>{name}</h5>)}
             </div>
             <div className="calendar">
-                {days.map(day=><Taskday key={day.date} day={day} date={date} setDate={setDate} />)}
+                {days.map(day=><Taskday key={day.date} day={day} date={date} setDate={setDate} email = {userEmail}/>)}
             </div>
         </div>
     );

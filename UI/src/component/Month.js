@@ -8,6 +8,7 @@ import TaskForm from "./Calendar/TaskForm";
 import Navbar from "./Navbar";
 import {MusicPlayer} from "./index";
 import {gql, useQuery} from "@apollo/client";
+import {useLocation} from 'react-router-dom';
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
 
@@ -52,6 +53,15 @@ const getDatabase = async ()=> {
 }
 
 const Month = () => {
+    const { state } = useLocation();
+    let userEmail = "";
+    let google = false;
+    if (state != null) {
+        userEmail = state.email;
+        google = state.google;
+    } 
+
+
     let gapi = window.gapi;
 
     let CLIENT_ID = "810582666663-ga8mvf3u0r2jhpdq2fb224i01sk6b4mj.apps.googleusercontent.com"
@@ -135,22 +145,22 @@ const Month = () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar email = {userEmail}  google={google}/>
             <MusicPlayer/>
             <div className="day-block"></div>
             <div style={{padding: '120px 60px 65px 0px'}}>
-                <Set/>
+                <Set email = {userEmail}  google={google}/>
                 <div className={"container"}>
                     <CalendarState>
-                        <Header/>
-                        <Calendar/>
-                        <TaskForm/>
+                        <Header email = {userEmail}/>
+                        <Calendar email = {userEmail}/>
+                        <TaskForm />
                     </CalendarState>
                     <button className={"monthexport"} onClick={handleClick}>
                         Export to Google Calendar
                     </button>
                 </div>
-
+                
             </div>
             <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">
                 <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
