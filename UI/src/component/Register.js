@@ -66,6 +66,7 @@ function Register() {
 
     const [addUser, {data, loading, error}] = useMutation(REGISTER_USER, {
         update(_, result) {
+            alert("Register Successfully! Please Login Again.");
             navigate('/login', { replace: true })
         },
         onError(err) {
@@ -78,7 +79,6 @@ function Register() {
         addUser();
     }
 
-    console.log(errors);
     return (
         <div className="Register">
             <Navigation  className="nav"/>

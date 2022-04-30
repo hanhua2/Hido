@@ -48,6 +48,7 @@ function LogIn() {
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
         update(_, result) {
+            alert("Login Successfully!");
             navigate("/account", {state:{email:values.email, google: false}});
         },
         onError(err) {
@@ -61,7 +62,7 @@ function LogIn() {
     }
 
     const success = (response) => {
-        navigate("/account", {state:{email:response.Qu.Gv, google: true}} );  
+        navigate("/account", {state:{email:response.Qu.Gv, google: true}} );
         console.log(response)
     }
 
@@ -70,7 +71,6 @@ function LogIn() {
         console.log(response);
     }
 
-    console.log(errors);
     return (
    <div className="Login">
        <Navigation  className="nav"/>

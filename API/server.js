@@ -132,7 +132,6 @@ async function registeruser(_, {
 
 
     password = await bcrypt.hash(password, 12);
-    console.log(password)
     const result = await db.collection('users').insertOne({
         "id":uuidv4(), "lastname":lastname, "firstname":firstname, "email":email, "password":password, "created": new Date()
     })
