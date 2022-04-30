@@ -55,8 +55,10 @@ const getDatabase = async ()=> {
 const Month = () => {
     const { state } = useLocation();
     let userEmail = "";
+    let google = false;
     if (state != null) {
         userEmail = state.email;
+        google = state.google;
     } 
 
 
@@ -143,11 +145,11 @@ const Month = () => {
 
     return (
         <>
-            <Navbar email = {userEmail}/>
+            <Navbar email = {userEmail}  google={google}/>
             <MusicPlayer/>
             <div className="day-block"></div>
             <div style={{padding: '120px 60px 65px 0px'}}>
-                <Set email = {userEmail}/>
+                <Set email = {userEmail}  google={google}/>
                 <div className={"container"}>
                     <CalendarState>
                         <Header email = {userEmail}/>

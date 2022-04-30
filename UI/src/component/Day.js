@@ -100,8 +100,10 @@ function Day() {
 
     const { state } = useLocation();
     let userEmail = "";
+    let google = false;
     if (state != null) {
         userEmail = state.email;
+        google = state.google;
     } 
 
 
@@ -250,11 +252,11 @@ function Day() {
 
     return (
         <>
-            <Navbar email = {userEmail}/><MusicPlayer/>
+            <Navbar email = {userEmail}  google={google}/><MusicPlayer/>
 
             <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
-                <Set email = {userEmail}/>
+                <Set email = {userEmail}  google={google}/>
                 <button className={"function"} style={{margin: "10px 20px 0px 600px"}} onClick={() => sortTask()}>Sort
                 </button>
                 <button className={"function"} onClick={handleDownloadImage}>Export</button>

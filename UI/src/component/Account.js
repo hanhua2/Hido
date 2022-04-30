@@ -11,15 +11,16 @@ function Account() {
     if (state != null) {
         userEmail = state.email;
     }
+    const google = state.google;
     
     return (
         <>
-            <Navbar email = {userEmail} />
+            <Navbar email = {userEmail} google={google} />
             <MusicPlayer/>
             <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
 
-                <Set email = {userEmail} />
+                <Set email = {userEmail} google={google}/>
 
                 <h2 style={{"text-align": "left"}}>Getting Started</h2>
                 <h4 style={{"text-align": "left"}}>🐱‍🐉Welcome to Hido</h4>

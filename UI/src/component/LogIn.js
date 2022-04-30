@@ -48,10 +48,11 @@ function LogIn() {
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
         update(_, result) {
-            navigate("/account", {state:{email:values.email}});
+            navigate("/account", {state:{email:values.email, google: false}});
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
+            alert("Email or password incorrect");
         },
         variables: values
     });
@@ -61,11 +62,12 @@ function LogIn() {
     }
 
     const success = (response) => {
-        navigate("/account", {replace: true});
+        navigate("/account", {state:{email:response.Qu.Gv, google: true}} );  
         console.log(response)
     }
 
     const failure = (response) => {
+        alert("Google login failed");
         console.log(response);
     }
 
