@@ -16,7 +16,8 @@ const MusicPlayer = ()=>{
             "year": "2",
             "img_src": "../../songs_images/save-your-tears.jpg",
             "src": "../../songs/save-your-tears.mp3",
-            "url":"https://www.youtube.com/watch?v=XXYlFuWEuKI"
+            "url":"https://www.youtube.com/watch?v=XXYlFuWEuKI",
+            'favorited': false,
         },
         {
             "title": "Blinding Lights",
@@ -26,7 +27,8 @@ const MusicPlayer = ()=>{
             "year": "2",
             "img_src": "../../songs_images/blinding-lights.jpg",
             "src": "../../songs/Blinding-Lights.mp3",
-            "url":"https://www.youtube.com/watch?v=4NRXx6U8ABQ"
+            "url":"https://www.youtube.com/watch?v=4NRXx6U8ABQ",
+            'favorited': false,
         },
         {
             "title": "Lemon",
@@ -36,7 +38,8 @@ const MusicPlayer = ()=>{
             "year": "4",
             "img_src": "../../songs_images/Lemon.jpg",
             "src": "../../songs/lemon.mp3",
-            "url":"https://www.youtube.com/watch?v=SX_ViT4Ra7k"
+            "url":"https://www.youtube.com/watch?v=SX_ViT4Ra7k",
+            'favorited': false,
         },
         {
             "title": "小さな恋のうた",
@@ -46,7 +49,8 @@ const MusicPlayer = ()=>{
             "year": "21",
             "img_src": "../../songs_images/MONGOL800.jpg",
             "src": "../../songs/MONGOL800.mp3",
-            "url":"https://www.youtube.com/watch?v=u8EkSB9zSpE"
+            "url":"https://www.youtube.com/watch?v=u8EkSB9zSpE",
+            'favorited': false,
         },
         {
             "title": "Loving Strangers",
@@ -56,7 +60,8 @@ const MusicPlayer = ()=>{
             "year": "12",
             "img_src": "../../songs_images/loving_strangers.jpg",
             "src": "../../songs/loving_strangers.mp3",
-            "url":"https://www.youtube.com/watch?v=NgbcXig1TZ8"
+            "url":"https://www.youtube.com/watch?v=NgbcXig1TZ8",
+            'favorited': false,
         },
         {
             "title": "Something Just Like This",
@@ -66,7 +71,19 @@ const MusicPlayer = ()=>{
             "year": "5",
             "img_src": "../../songs_images/Something_Just_Like_This.jpg",
             "src": "../../songs/Just_Like_This.mp3",
-            "url":"https://www.youtube.com/watch?v=FM7MFYoylVs"
+            "url":"https://www.youtube.com/watch?v=FM7MFYoylVs",
+            'favorited': false,
+        },
+        {
+            "title": "How Long Will I love You",
+            "artist": "Ellie Goulding",
+            "album": "Halcyon Days",
+            "track": "How Long Will I love You",
+            "year": "8",
+            "img_src": "../../songs_images/howlong.jpg",
+            "src": "../../songs/howlong.mp3",
+            "url":"https://www.youtube.com/watch?v=an4ySOlsUMY",
+            'favorited': false,
         },
         ]
     )
@@ -87,7 +104,8 @@ const MusicPlayer = ()=>{
 
     return (
             <div className="Music">
-                <Player currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} nextSongIndex={nextSongIndex} songs={songs}/>
+                <Player currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} nextSongIndex={nextSongIndex} songs={songs}
+                        setNextSongIndex={setNextSongIndex}/>
             </div>
     );
 }

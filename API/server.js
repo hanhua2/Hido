@@ -43,7 +43,7 @@ const validateRegisterInput = (
     if (email.trim() === '') {
         errors.email = 'Email must not be empty, please try again';
     } else {
-        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]*\.)+[a-zA-Z]{2,9})$/;
         if (!email.match(regEx)) {
             errors.email = 'Email must be a valid email address, please try again';
         }
@@ -67,7 +67,7 @@ const validateLoginInput = (
     if (email.trim() === '') {
         errors.email = 'Email must not be empty, please try again';
     } else {
-        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+        const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]*\.)+[a-zA-Z]{2,9})$/;
         if (!email.match(regEx)) {
             errors.email = 'Email must be a valid email address, please try again';
         }
@@ -120,7 +120,6 @@ async function registeruser(_, {
         throw new UserInputError('Errors', {errors});
     }
 
-
     const user = await db.collection('users').findOne({'email': email})
 
     if (user) {
@@ -133,7 +132,7 @@ async function registeruser(_, {
 
 
     password = await bcrypt.hash(password, 12);
-
+    console.log(password)
     const result = await db.collection('users').insertOne({
         "id":uuidv4(), "lastname":lastname, "firstname":firstname, "email":email, "password":password, "created": new Date()
     })

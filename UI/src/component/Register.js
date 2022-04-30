@@ -69,7 +69,7 @@ function Register() {
             navigate('/login', { replace: true })
         },
         onError(err) {
-            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+            setErrors(err.graphQLErrors[0].extensions.errors);
         },
         variables: values
     });
@@ -78,6 +78,7 @@ function Register() {
         addUser();
     }
 
+    console.log(errors);
     return (
         <div className="Register">
             <Navigation  className="nav"/>

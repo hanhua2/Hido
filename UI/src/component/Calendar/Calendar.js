@@ -9,7 +9,7 @@ function Calendar() {
 
     useEffect(() => {
         setDate(new Date());
-        // eslint-disable-next-line
+
     }, []);
 
     if (days.length < 1) return null;

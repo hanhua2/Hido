@@ -70,7 +70,7 @@ const Month = () => {
 
             const event = {
                 'summary': obj.name,
-                'description': 'Status: ' + obj.status.toString() + 'Priority: ' + obj.priority.toString() + 'Comment: '+obj.comment.toString(),
+                'description': 'Status: ' + obj.status.toString() + ' Priority: ' + obj.priority.toString() + ' Comment: '+obj.comment.toString(),
                 'start': {
                     'dateTime': obj.date,
                     'timeZone': 'Asia/Singapore'
@@ -80,7 +80,7 @@ const Month = () => {
                     'timeZone': 'Asia/Singapore'
                 },
                 'recurrence': [
-                    'RRULE:FREQ=DAILY;COUNT=2'
+                    'RRULE:FREQ=DAILY;COUNT=1'
                 ],
                 'reminders': {
                     'useDefault': false,

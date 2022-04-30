@@ -51,7 +51,7 @@ function LogIn() {
             navigate("/account", {replace: true});
         },
         onError(err) {
-            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+            setErrors(err.graphQLErrors[0].extensions.errors);
         },
         variables: values
     });
@@ -69,6 +69,7 @@ function LogIn() {
         console.log(response);
     }
 
+    console.log(errors);
     return (
    <div className="Login">
        <Navigation  className="nav"/>
@@ -101,6 +102,15 @@ function LogIn() {
             <Button type={"submit"} className ="submit" primary>Take me to Hido</Button>
         </Form>
 
+       {Object.keys(errors).length > 0 && (
+           <div className="ui error message">
+               <ul className="list">
+                   {Object.values(errors).map((value) => (
+                       <li key={value}>{value}</li>
+                   ))}
+               </ul>
+           </div>
+       )}
       <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <p className="u-small-text u-text u-text-variant u-text-1">@2022 Hido Copyright.</p>
