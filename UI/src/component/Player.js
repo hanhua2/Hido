@@ -87,7 +87,7 @@ function Player(props) {
         }
     };
 
-    //console.log(audioElement.currentTime)
+    //console.log(audioElement.current.currentTime)
 
     return (
         <>
