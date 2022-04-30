@@ -42,7 +42,7 @@ async function graphQLFetch(query, variables = {}) {
 const getDatabase = async ()=> {
   const query = `query {
     taskList {
-      date, name, color, status, priority, comment, id,
+      date, name, color, status, priority, comment, id, userEmail
     }
   }`
   const data = await graphQLFetch(query);

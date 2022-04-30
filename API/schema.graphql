@@ -24,6 +24,7 @@ type Task {
   priority: String!
   comment: String!
   id: String!
+  userEmail: String!
 }
 
 input TaskInput {
@@ -34,6 +35,7 @@ input TaskInput {
   priority: String!
   comment: String!
   id: String!
+  userEmail: String!
 }
 
 type Query {

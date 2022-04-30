@@ -48,7 +48,7 @@ function LogIn() {
 
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER, {
         update(_, result) {
-            navigate("/account", {replace: true});
+            navigate("/account", {state:{email:values.email}});
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);

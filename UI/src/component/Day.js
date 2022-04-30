@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Navbar from "./Navbar";
 import {MusicPlayer} from "./index";
 import html2canvas from 'html2canvas';
+import {useLocation} from 'react-router-dom';
 
 
 const dateRegex = new RegExp('^\\d\\d\\d\\d-\\d\\d-\\d\\d');
@@ -86,22 +87,28 @@ const PRIORITY_MAP = {
     "Primary": 1,
     "Urgent": 2,
     "Normal": 3,
-    "No Rush": 4
+    "No Rush": 4,
 }
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-function Day(props) {
+function Day() {
     const [filter, setFilter] = useState('All');
     const [tasks, setTasks] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
     const [sorted, setSorted] = useState(false);
 
+    const { state } = useLocation();
+    let userEmail = "";
+    if (state != null) {
+        userEmail = state.email;
+    } 
+
 
     const fetchData = async () => {
         const query = `query {
       taskList {
-        date, name, color, status, priority, comment, id,
+        date, name, color, status, priority, comment, id, userEmail
       }
     }`
         const data = await graphQLFetch(query);
@@ -114,7 +121,6 @@ function Day(props) {
     useEffect(() => {
         fetchData();
     }, []);
-
 
     function toggleTaskCompleted(id) {
         const updatedTasks = tasks.map(task => {
@@ -141,7 +147,8 @@ function Day(props) {
             color: "#d2635b",
             priority: priority,
             comment: "",
-            date: startDate
+            date: startDate,
+            userEmail: userEmail
         };
         taskAdd(newTask);
         setTasks([...tasks, newTask]);
@@ -190,8 +197,9 @@ function Day(props) {
             && a.getFullYear() === b.getFullYear();
     }
 
+
     const taskList = tasks
-        .filter(FILTER_MAP[filter]).filter(task => sameDay(startDate, task.date))
+        .filter(FILTER_MAP[filter]).filter(task => sameDay(startDate, task.date)).filter(task => task.userEmail ===state.email )
         .map(task => (
             <Todo
                 id={task.id}
@@ -204,7 +212,6 @@ function Day(props) {
                 editTask={editTask}
             />
         ));
-
 
     const filterList = FILTER_NAMES.map(name => (
         <FilterButton
@@ -243,9 +250,10 @@ function Day(props) {
 
     return (
         <>
-            <Navbar/><MusicPlayer/>
+            <Navbar email = {userEmail}/><MusicPlayer/>
+            <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
-                <Set/>
+                <Set email = {userEmail}/>
                 <button className={"function"} style={{margin: "10px 20px 0px 600px"}} onClick={() => sortTask()}>Sort
                 </button>
                 <button className={"function"} onClick={handleDownloadImage}>Export</button>

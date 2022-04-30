@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Set from "./Set";
 import Navbar from "./Navbar";
 import "../Day.css"
 import {MusicPlayer} from "./index";
+import {useLocation} from 'react-router-dom';
 
 function Account() {
+    const { state } = useLocation();
+    let userEmail;
+    if (state != null) {
+        userEmail = state.email;
+    }
+    
     return (
         <>
-            <Navbar/>
+            <Navbar email = {userEmail} />
             <MusicPlayer/>
+            <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
 
-                <Set/>
+                <Set email = {userEmail} />
 
                 <h2 style={{"text-align": "left"}}>Getting Started</h2>
                 <h4 style={{"text-align": "left"}}>🐱‍🐉Welcome to Hido</h4>

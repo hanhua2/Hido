@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { GoogleLogout } from 'react-google-login';
 import '../Set.scss';
 
 const sidebarNavItems = [
@@ -20,13 +21,15 @@ const sidebarNavItems = [
     }
 ]
 
-const Set = () => {
+const Set = (props) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [stepHeight, setStepHeight] = useState(0);
     const sidebarRef = useRef();
     const indicatorRef = useRef();
     const location = useLocation();
 
+    const userEmail = props.email;
+   
     useEffect(() => {
         setTimeout(() => {
             const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
@@ -46,8 +49,16 @@ const Set = () => {
 
     const handleClick = (event) => {
         event.preventDefault();
+        alert("Logout made successfully")
         navigate('/', { replace: true })
     };
+
+    const logout = (event) => {
+        alert("Logout made successfully")
+        navigate('/', { replace: true })
+    }
+
+
     return(
     <div className='sidebar'>
         <div className="sidebar__logo">
@@ -64,7 +75,7 @@ const Set = () => {
             </div>
             {
                 sidebarNavItems.map((item, index) => (
-                    <Link to={item.to} key={index}>
+                    <Link to={item.to} state={{email: userEmail}} key={index} >
                         <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
                             <div className="sidebar__menu__item__icon">
                                 {item.icon}
@@ -78,6 +89,11 @@ const Set = () => {
 
             }
         </div>
+        <GoogleLogout
+            clientId="810582666663-ga8mvf3u0r2jhpdq2fb224i01sk6b4mj.apps.googleusercontent.com"
+            buttonText="Logout"
+            onLogoutSuccess={logout}
+        />
         <button className={"sidebar__logout"} onClick={handleClick}>
             Log out
         </button>
