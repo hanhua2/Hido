@@ -137,7 +137,8 @@ const Month = () => {
         <>
             <Navbar/>
             <MusicPlayer/>
-            <div style={{padding: '150px 100px 65px 0px'}}>
+            <div className="day-block"></div>
+            <div style={{padding: '120px 60px 65px 0px'}}>
                 <Set/>
                 <div className={"container"}>
                     <CalendarState>
