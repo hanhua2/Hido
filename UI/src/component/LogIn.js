@@ -51,8 +51,12 @@ function LogIn() {
             navigate("/account", {state:{email:values.email, google: false}});
         },
         onError(err) {
+<<<<<<< HEAD
+            setErrors(err.graphQLErrors[0].extensions.errors);
+=======
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
             alert("Email or password incorrect");
+>>>>>>> c8955dc995ed57bd5d1f389f250d94122f7e0272
         },
         variables: values
     });
@@ -71,6 +75,7 @@ function LogIn() {
         console.log(response);
     }
 
+    console.log(errors);
     return (
    <div className="Login">
        <Navigation  className="nav"/>
@@ -103,6 +108,15 @@ function LogIn() {
             <Button type={"submit"} className ="submit" primary>Take me to Hido</Button>
         </Form>
 
+       {Object.keys(errors).length > 0 && (
+           <div className="ui error message">
+               <ul className="list">
+                   {Object.values(errors).map((value) => (
+                       <li key={value}>{value}</li>
+                   ))}
+               </ul>
+           </div>
+       )}
       <footer className="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-5cf3">
         <div className="u-clearfix u-sheet u-valign-middle u-sheet-1">
           <p className="u-small-text u-text u-text-variant u-text-1">@2022 Hido Copyright.</p>
