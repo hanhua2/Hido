@@ -150,7 +150,7 @@ const Month = () => {
                 <Set email = {userEmail}/>
                 <div className={"container"}>
                     <CalendarState>
-                        <Header/>
+                        <Header email = {userEmail}/>
                         <Calendar email = {userEmail}/>
                         <TaskForm />
                     </CalendarState>
