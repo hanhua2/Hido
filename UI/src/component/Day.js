@@ -250,7 +250,11 @@ function Day() {
 
     return (
         <>
+<<<<<<< HEAD
             <Navbar email = {userEmail}/><MusicPlayer/>
+=======
+            <Navbar/><MusicPlayer/>
+>>>>>>> 91897cf78d772480af369875f0af8fc39fbb6905
             <div className="day-block"></div>
             <div className="todoapp stack-large" id="resize">
                 <Set email = {userEmail}/>

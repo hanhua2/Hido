@@ -147,7 +147,11 @@ const Month = () => {
             <MusicPlayer/>
             <div className="day-block"></div>
             <div style={{padding: '120px 60px 65px 0px'}}>
+<<<<<<< HEAD
                 <Set email = {userEmail}/>
+=======
+                <Set/>
+>>>>>>> 91897cf78d772480af369875f0af8fc39fbb6905
                 <div className={"container"}>
                     <CalendarState>
                         <Header/>
