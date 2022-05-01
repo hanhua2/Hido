@@ -27,6 +27,8 @@ function TaskForm(props) {
     const [priority, setPriority] = useState("Normal");
     const [comment, setComment] = useState("");
     const [userEmail, setUserEmail] = useState(props.email);
+    const [File, setFile] = useState("");
+    const [FilePicked, setFilePicked] = useState(false);
 
     const statusOptions = [
         { value: 'To do', label: 'To do'},
@@ -61,7 +63,6 @@ function TaskForm(props) {
             setStatus(task.status || "To do");
             setPriority(task.priority || "Normal");
             setComment(task.comment || "");
-            setUserEmail(props.email || "");
         }
         console.log(task);
     }, [task]);
@@ -87,7 +88,8 @@ function TaskForm(props) {
             status: status,
             priority: priority,
             comment: comment,
-            userEmail: userEmail
+            userEmail: userEmail,
+
         });
         await setDate(date);
         closeModal();
@@ -100,6 +102,11 @@ function TaskForm(props) {
         closeModal();
         setError(false);
     }
+
+    const changeHandler = (event) => {
+        setFile(event.target.files[0]);
+        setFilePicked(true);
+    };
 
     return (
         <Modal
@@ -156,11 +163,20 @@ function TaskForm(props) {
 
                 <label>Attachments</label>
                 <div>
-                    <button
-                        className="button button-grey"
-                        onClick={_saveTask}
-                    >Click to add attachments
-                    </button>
+                    <input type="file" name="file" onChange={changeHandler} className="custom-input"/>
+                    {FilePicked ? (
+                        <div>
+                            <p className="file-text">Filename: {File.name}</p>
+                            <p className="file-text">Filetype: {File.type}</p>
+                            <p className="file-text">Size in bytes: {File.size}</p>
+                            <p className="file-text">
+                                lastModifiedDate:{' '}
+                                {File.lastModifiedDate.toLocaleDateString()}
+                            </p>
+                        </div>
+                    ) : (
+                        <p></p>
+                    )}
                 </div>
                 <div>
                     <button className="button button-red" onClick={closeModal}>

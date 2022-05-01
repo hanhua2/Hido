@@ -62,12 +62,13 @@ function LogIn() {
     }
 
     const success = (response) => {
-        navigate("/account", {state:{email:response.Qu.Gv, google: true}} );
-        console.log(response)
+        navigate("/account", {state:{email:response.profileObj.email, google: true}});
+        alert("Google Login Successfully!");
+        console.log(response.profileObj.email)
     }
 
     const failure = (response) => {
-        alert("Google login failed");
+        alert("Google Login Failed! Please Try Again");
         console.log(response);
     }
 

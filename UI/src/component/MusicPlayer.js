@@ -2,8 +2,6 @@ import React from "react";
 import {useState,useEffect} from "react";
 import {Player} from "./index";
 import '../Music.css'
-import Set from './Set'
-import {Navbar} from "./index";
 
 
 const MusicPlayer = ()=>{
