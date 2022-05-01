@@ -44,7 +44,7 @@ async function graphQLFetch(query, variables = {}) {
     }
 }
 
-async function taskAdd(task) {
+async function taskAdd(task) { // add tasks to database
     const query = `mutation myMutation($task:TaskInput!){
     taskAdd(task: $task) {
       id 
@@ -55,7 +55,7 @@ async function taskAdd(task) {
     const data = await graphQLFetch(query, {task});
 }
 
-async function taskDelete(taskID) {
+async function taskDelete(taskID) { // delete tasks in database use taskID
     const query = `mutation myMutation($taskID:String!){
     taskDelete(taskID: $taskID) {
     name
@@ -65,7 +65,7 @@ async function taskDelete(taskID) {
 }
 
 
-async function taskUpdate(task) {
+async function taskUpdate(task) { // search task in database by id and update
     const query = `mutation myMutation($task:TaskInput!){
     taskUpdate(task: $task) {
       id 
@@ -77,13 +77,13 @@ async function taskUpdate(task) {
 }
 
 
-const FILTER_MAP = {
-    All: () => true,
+const FILTER_MAP = { // filter function for the three filter buttons
+    All: () => true, 
     Todo: task => task.status === "To do" || task.status === "Doing",
     Done: task => task.status === "Done"
 };
 
-const PRIORITY_MAP = {
+const PRIORITY_MAP = { // map the priority of task to values to sort
     "Primary": 1,
     "Urgent": 2,
     "Normal": 3,
@@ -99,15 +99,15 @@ function Day() {
     const [sorted, setSorted] = useState(false);
 
     const { state } = useLocation();
-    let userEmail = "";
-    let google = false;
+    let userEmail = "";    // userEmail is the email of logged in user and will be stored in task
+    let google = false;    // google variable will indicate if user use google login, the logout button will be different  
     if (state != null) {
         userEmail = state.email;
         google = state.google;
     } 
 
 
-    const fetchData = async () => {
+    const fetchData = async () => {  //get task data from database
         const query = `query {
       taskList {
         date, name, color, status, priority, comment, id, userEmail
@@ -124,7 +124,7 @@ function Day() {
         fetchData();
     }, []);
 
-    function toggleTaskCompleted(id) {
+    function toggleTaskCompleted(id) {  // mark task as completed. Triggered when checkbox is checked.
         const updatedTasks = tasks.map(task => {
             if (id === task.id) {
                 return {...task, status: task.status === "Done" ? "To do" : "Done"}
@@ -141,7 +141,7 @@ function Day() {
         taskUpdate(newTask[0]);
     }
 
-    function addTask(name, priority) {
+    function addTask(name, priority) { //add task will chosen priority
         const newTask = {
             id: "todo-" + uuidv4(),
             name: name,
@@ -156,7 +156,7 @@ function Day() {
         setTasks([...tasks, newTask]);
     }
 
-    function deleteTask(id) {
+    function deleteTask(id) { // delete task
         taskDelete(id);
         const remainingTasks = tasks.filter(task => id !== task.id);
         setTasks(remainingTasks);
@@ -180,7 +180,7 @@ function Day() {
         taskUpdate(newTask[0]);
     }
 
-    function sortTask() {
+    function sortTask() { // sort task according to priority
         const sortedTasks = tasks.map(task => {
             task.idx = PRIORITY_MAP[task.priority];
             return task
@@ -200,7 +200,7 @@ function Day() {
     }
 
 
-    const taskList = tasks
+    const taskList = tasks // filte the task according to date and user to be displayed
         .filter(FILTER_MAP[filter]).filter(task => sameDay(startDate, task.date)).filter(task => task.userEmail ===state.email )
         .map(task => (
             <Todo
@@ -231,7 +231,7 @@ function Day() {
 
     const printRef = useRef();
 
-    const handleDownloadImage = async () => {
+    const handleDownloadImage = async () => {  // export task as image
             const element = printRef.current;
             const canvas = await html2canvas(element);
 
