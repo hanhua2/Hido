@@ -45,7 +45,7 @@ async function graphQLFetch(query, variables = {}) {
 const getDatabase = async ()=> {
     const query = `query {
     taskList {
-      date, name, status, priority, comment,
+      date, name, status, priority, comment, userEmail
     }
   }`
     const data = await graphQLFetch(query);
@@ -60,8 +60,8 @@ const Month = () => {
         userEmail = state.email;
         google = state.google;
     } 
-
-
+    
+    //console.log(userEmail);
     let gapi = window.gapi;
 
     let CLIENT_ID = "810582666663-ga8mvf3u0r2jhpdq2fb224i01sk6b4mj.apps.googleusercontent.com"
@@ -152,9 +152,9 @@ const Month = () => {
                 <Set email = {userEmail}  google={google}/>
                 <div className={"container"}>
                     <CalendarState>
-                        <Header email = {userEmail}/>
+                        <Header />
                         <Calendar email = {userEmail}/>
-                        <TaskForm />
+                        <TaskForm email = {userEmail}/>
                     </CalendarState>
                     <button className={"monthexport"} onClick={handleClick}>
                         Export to Google Calendar
